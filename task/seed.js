@@ -30,14 +30,14 @@ async function main() {
         comment : []
     };
     const insert_recipe = await recipes.createRecipe(newRecipe);
-
+    console.log(insert_recipe);
     const top10recipes = {
         _id : "Top10",
         recipes: [
             {
-                _id : insert_recipe._id,
-                title : insert_recipe.title,
-                likes : insert_recipe.likes
+                _id : insert_recipe[0]._id,
+                title : insert_recipe[0].title,
+                likes : insert_recipe[0].likes
             }
             ]
     };

@@ -13,7 +13,6 @@ const exportedMethod = {
         const recipesCollection = await recipes();
         const getInfo = await recipesCollection.find({_id : id}).toArray();
         if(getInfo === 0) throw "No such recipe in Database";
-        console.log(getInfo);
         return getInfo;
     },
 
@@ -32,7 +31,6 @@ const exportedMethod = {
         const insertInfo = await recipeCollection.insertOne(newRecipe);
         if(insertInfo === 0) throw "Can not insert a new recipe!";
         const inserted_one = await this.getRecipeById(insertInfo.insertedId);
-        console.log(inserted_one);
         return inserted_one;
     },
 
