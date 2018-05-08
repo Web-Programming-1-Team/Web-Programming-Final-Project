@@ -11,13 +11,15 @@ const exportedMethod = {
     async getRecipeById(id){
         if(!id) throw "No recipe ID provided!";
         const recipesCollection = await recipes();
-        const getInfo = await recipesCollection.find({id : id}).toArray();
-        if(getInfo === 0) throw "No such recipe in Database"
+        const getInfo = await recipesCollection.find({_id : id}).toArray();
+        if(getInfo === 0) throw "No such recipe in Database";
+        console.log(getInfo);
+        return getInfo;
     },
 
     async createRecipe(recipeinfo){
         const newRecipe = {
-            id : uuid(),
+            _id : uuid(),
             title : recipeinfo.title,
             category: recipeinfo.category,
             likes : 0,
@@ -29,7 +31,15 @@ const exportedMethod = {
         const recipeCollection = await recipes();
         const insertInfo = await recipeCollection.insertOne(newRecipe);
         if(insertInfo === 0) throw "Can not insert a new recipe!";
-        return this.getRecipeById(insertInfo.insertedId);
+        const inserted_one = await this.getRecipeById(insertInfo.insertedId);
+        console.log(inserted_one);
+        return inserted_one;
+    },
+
+    async createTop10Recipes(Top10info){
+        const recipeCollection = await recipes();
+        const insertInfo = await recipeCollection.insertOne(Top10info);
+        if(insertInfo === 0) throw "Can not insert a new recipe!";
     },
 
     async updateRecipe(id, recipe){
@@ -48,7 +58,7 @@ const exportedMethod = {
         if(recipe.comment){
             updateData.comment = recipe.comment;
         }
-        const updateInfo = await recipeCollection.updateOne({id : id}, {$set : updateData});
+        const updateInfo = await recipeCollection.updateOne({_id : id}, {$set : updateData});
         if(updateInfo === null) throw "Can not update this recipe!";
 
         return await this.getRecipeById(id);
@@ -57,7 +67,7 @@ const exportedMethod = {
     async removeRecipe(id){
         if(!id) throw "No recipe ID provided!";
         const recipeCollection = await recipes();
-        const deleteInfo = await recipeCollection.removeOne({id : id});
+        const deleteInfo = await recipeCollection.removeOne({_id : id});
         if(deleteInfo === 0) throw "Can not delete recipe by given id!";
     }
 };

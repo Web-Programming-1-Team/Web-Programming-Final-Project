@@ -1,16 +1,20 @@
 const express = require("express");
 const router = express.Router();
+const data = require("../data");
+const users = data.users;
+const recipes = data.recipes;
 
 //homepage with or without user login
-router.get("/",(req,res)=>{
+router.get("/", async (req,res)=>{
+    const top10 = await recipes.getRecipeById("Top10");
     if(req.session.user){
         res.render("homepage", {login : true,
                                  user:req.session.user,
-                                 recipe: Recipe});
+                                 recipe: top10.recipes});
     }
     else{
         res.render("homepage", {login : false,
-                                recipe : Recipe});
+                                recipe : top10.recipes});
     }
 });
 
@@ -20,15 +24,21 @@ router.get("/login",(req,res)=>{
 });
 //used to login any user
 router.post("/login", async (req,res)=>{
-    const user = req.body;
-    const username = user.username;
-    const password = user.password;
-    if(username === User.username && password === User.password){
-        req.session.user = User;
-        res.redirect("/");
-    }
-    else{
-        res.render("users/login",{error:"wrong username or password"});
+    try {
+        const user = req.body;
+        const username = user.username;
+        const password = user.password;
+        const getUser = await users.getUserByName(username);
+
+        if (username === getUser.username && password === getUser.password) {
+            req.session.user = getUser;
+            res.redirect("/");
+        }
+        else {
+            res.render("users/login", {error: "wrong password!"});
+        }
+    }catch(e){
+        res.render("users/login", {error: "wrong username!"})
     }
 });
 
@@ -43,21 +53,6 @@ router.get("/private/:id", async(req,res)=>{
     const id = req.params.id;
     res.render("users/private",{user : req.session.user, id : id});
 });
-
-
-
-const User = {
-    id: "1",
-    username : "test",
-    password : "test"
-};
-
-const Recipe = {
-    id : "2",
-    title: "recipe1",
-    category: "chuan",
-    likes: 0,
-};
 
 
 module.exports = router;

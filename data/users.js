@@ -7,26 +7,31 @@ const exportedMethods = {
         const usersCollection = await users();
         return await usersCollection.find({}).toArray();
     },
+    async getUserByName(username){
+        const usersCollection = await users();
+        const getInfo = await usersCollection.find({username:username}).toArray();
+        if(getInfo === 0) throw "No such User in Database!";
+        return getInfo;
+    },
 
     async getUserById(id) {
         if (!id) throw "No User ID provided!";
         const usersCollection = await users();
-        const getInfo = await usersCollection.find({id:id}).toArray();
+        const getInfo = await usersCollection.find({_id:id}).toArray();
         if(getInfo === 0) throw "No such User in Database!";
         return getInfo;
     },
 
     async createUser(userinfo){
-        const nickname = userinfo.nickname;
         const id = uuid();
         const newuser = {
-            id : id,
+            _id : id,
             username: userinfo.username,
             password: userinfo.password,
             admin: userinfo.admin,
             profile : {
-                id: id,
-                nickname: nickname,
+                _id: id,
+                nickname: userinfo.nickname,
                 favorite:[]
             },
             postlist:[]
@@ -52,7 +57,7 @@ const exportedMethods = {
         if(user.postlist){
             updateData.postlist = user.postlist;
         }
-        const updateInfo = await userCollection.updateOne({id : id},{$set : updateData});
+        const updateInfo = await userCollection.updateOne({_id : id},{$set : updateData});
         if(updateInfo === null) throw "Can not update this user!";
 
         return await this.getUserById(id);
@@ -61,7 +66,7 @@ const exportedMethods = {
     async removeUser(id){
         if(!id) throw "No User ID provided!";
         const userCollection = await users();
-        const deleteInfo = await userCollection.removeOne({id : id});
+        const deleteInfo = await userCollection.removeOne({_id : id});
         if(deleteInfo === 0) throw "Can not delete user by given id!";
     }
 };
