@@ -15,8 +15,8 @@ async function main() {
         db.dropCollection("recipes");
 
     const recipes_temp = [];
-    const fileContent = await fs.readFileAsync(__dirname + "/Recipes.json", "utf-8");
-    const jsonObj = JSON.parse(fileContent);
+    const fileRecipe = await fs.readFileAsync(__dirname + "/Recipes.json", "utf-8");
+    const jsonObj = JSON.parse(fileRecipe);
     for (let i = 0; i < jsonObj.length; i++) {
         let record = jsonObj[i];
         let _id = record['_id'];
@@ -54,15 +54,27 @@ async function main() {
         recipes: recipes_temp
     };
     await recipes.createTop10Recipes(top10recipes);
-    const newUser = {
-        username: "test",
-        password: "test",
-        admin: true,
-        profile : {
-            nickname: "test_nickname",
-        },
-    };
-    await users.createUser(newUser);
+
+    const fileUser = await fs.readFileAsync(__dirname + "/Users.json", "utf-8");
+    const jsonBoj2 =JSON.parse(fileUser);
+    for (let i = 0; i < jsonBoj2.length; i++) {
+        let record = jsonBoj2[i];
+        let _id = record['_id'];
+        let username = record['username'];
+        let password = record['password'];
+        let admin = record['admin'];
+        let profile = record['profile'];
+        let postlist = record['postlist'];
+        const newUser = {
+            _id : _id,
+            username : username,
+            password : password,
+            admin : admin,
+            profile : profile,
+            postlist : postlist
+        };
+        await users.initUser(newUser);
+    }
 
     await db.serverConfig.close();
     console.log("Seeding done");

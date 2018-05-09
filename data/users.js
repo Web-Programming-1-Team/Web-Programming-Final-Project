@@ -42,6 +42,21 @@ const exportedMethods = {
         return this.getUserById(insertInfo.insertedId);
     },
 
+    async initUser(user){
+        const newuser = {
+            _id : user.id,
+            username : user.username,
+            password : user.password,
+            admin : user.admin,
+            profile : user.profile,
+            postlist : user.postlist
+        };
+        const userCollection = await users();
+        const insertInfo = await userCollection.insertOne(newuser);
+        if(insertInfo === 0) throw "Can not insert a new user!";
+        return this.getUserById(insertInfo.insertedId);
+    },
+
     async updateUser(id,user){
         const userCollection = await users();
         const updateData = {};
