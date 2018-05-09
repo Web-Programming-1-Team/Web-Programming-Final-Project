@@ -3,10 +3,11 @@ const router = express.Router();
 const data = require("../data");
 const users = data.users;
 const recipes = data.recipes;
-
+const ccap = require('ccap');
 //homepage with or without user login
 router.get("/", async (req,res)=>{
     const top10 = await recipes.getRecipeById("Top10");
+    console.log(top10[0].recipes);
     if(req.session.user){
         res.render("homepage", {login : true,
                                  user:req.session.user,
@@ -53,5 +54,31 @@ router.get("/private/:id", async(req,res)=>{
     res.render("users/private",{user : req.session.user, id : id});
 });
 
+router.get("/register", (req,res)=>{
+    res.render("users/register");
+});
+
+router.post("/register", async(req,res)=>{
+    const user = req.body;
+    user.admin = false;
+    const text = user.verify;
+    while(text !== req.session.verifycode){
+        res.redirect("/register");
+    }
+    const getUser = await users.createUser(user);
+    req.session.user = getUser[0];
+    res.redirect("/");
+});
+
+
+router.get('/getCaptcha', (req,res)=>{
+    var captcha = ccap();
+    var ary = captcha.get();
+    var text = ary[0];
+    var buffer = ary[1];
+    req.session.verifycode=text.toLowerCase();
+    res.writeHead(200, { 'Content-Type': 'image/png', 'Content-Length': buffer.length });
+    res.end(buffer);
+});
 
 module.exports = router;
