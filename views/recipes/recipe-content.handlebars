@@ -18,8 +18,24 @@
         <li>
             <p>{{instruction}}</p>
             {{#each image}}
-                <img src="{{src}}">
+                <img src="{{src}}" width="320" height="240">
             {{/each}}
         </li>
     {{/each}}
 </ul>
+<ul>
+    {{#each recipe.comment}}
+        <li>
+            <p>{{poster.nickname}}</p>
+            <br>
+            <p>{{content}}</p>
+        </li>
+    {{/each}}
+</ul>
+
+<form action="/recipes/{{id}}" method="post">
+    <label for="comment">
+        <input name="comment" placeholder="enter some comments here.">
+    </label>
+    <button type="submit">comment</button>
+</form>

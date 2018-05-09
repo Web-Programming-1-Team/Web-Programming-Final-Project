@@ -32,9 +32,7 @@ router.post('/upload', upload.single('file'), function (req, res) {
     src_list.push(src);
 });
 
-router.post("/uploads",function(req,res){
-    console.log(src_list);
-    console.log(req.body);
+router.post("/uploads",async(req,res)=>{
     const name = req.body.name;
     const amount = req.body.amount;
     const instruction = req.body.instruction;
@@ -51,7 +49,9 @@ router.post("/uploads",function(req,res){
     for(let i = 0; i < instruction.length; i++){
         const tempobj = {
             instruction : instruction[i],
-            image : src_list[i + 1]
+            image : [{
+                src: src_list[i + 1]
+            }]
         };
         steps.push(tempobj);
     }
@@ -64,15 +64,36 @@ router.post("/uploads",function(req,res){
     newrecipe.picture = src_list[0];
     newrecipe.ingredients = ingredients;
     newrecipe.steps = steps;
-    console.log(newrecipe);
-
-    res.redirect('/');
+    const create_result = await recipes.createRecipe(newrecipe);
+    res.render('recipes/recipe-content',{recipe : create_result[0]});
 });
 
 router.get("/:id", async(req,res)=>{
     const id = req.params.id;
     const getRecipe = await recipes.getRecipeById(id);
-    res.render("recipes/recipe-content",{recipe : getRecipe[0], id : id});
+    console.log(getRecipe[0]);
+    res.render("recipes/recipe-content",{recipe : getRecipe[0], id:id});
+});
+
+router.post("/:id", async(req,res)=>{
+    const id = req.params.id;
+    const userid = req.session.user._id;
+    const username = req.session.user.username;
+    const nickname = req.session.user.profile.nickname;
+    const comment = req.body.comment;
+    const newcomment = {
+        _id:userid,
+      poster:{
+          _id:userid,
+          nickname:nickname,
+      },
+      content:comment
+    };
+    const curRecipe = await recipes.getRecipeById(id);
+    curRecipe[0].comment.push(newcomment);
+    console.log(curRecipe[0].comment);
+    await recipes.updateRecipe(id,curRecipe[0]);
+    res.redirect(`/recipes/${id}`);
 });
 
 module.exports = router;

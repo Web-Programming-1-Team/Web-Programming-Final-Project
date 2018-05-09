@@ -72,10 +72,10 @@ router.post("/register", async(req,res)=>{
 
 
 router.get('/getCaptcha', (req,res)=>{
-    var captcha = ccap();
-    var ary = captcha.get();
-    var text = ary[0];
-    var buffer = ary[1];
+    let captcha = ccap();
+    let ary = captcha.get();
+    let text = ary[0];
+    let buffer = ary[1];
     req.session.verifycode=text.toLowerCase();
     res.writeHead(200, { 'Content-Type': 'image/png', 'Content-Length': buffer.length });
     res.end(buffer);
