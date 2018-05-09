@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3de3b3d9-fa3d-4481-b8bb-7253e122c1b3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change beforePath="$PROJECT_DIR$/data/recipes.js" afterPath="$PROJECT_DIR$/data/recipes.js" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" afterPath="$PROJECT_DIR$/routes/users.js" />
-      <change beforePath="$PROJECT_DIR$/task/seed.js" afterPath="$PROJECT_DIR$/task/seed.js" />
-      <change beforePath="$PROJECT_DIR$/views/homepage.handlebars" afterPath="$PROJECT_DIR$/views/homepage.handlebars" />
-    </list>
+    <list default="true" id="3de3b3d9-fa3d-4481-b8bb-7253e122c1b3" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -339,12 +332,12 @@
       <option name="presentableId" value="Default" />
       <updated>1525804752310</updated>
       <workItem from="1525804754040" duration="6204000" />
-      <workItem from="1525812212504" duration="10612000" />
+      <workItem from="1525812212504" duration="10672000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16816000" />
+    <option name="totallyTimeSpent" value="16876000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="123" y="23" width="1676" height="938" extended-state="0" />
