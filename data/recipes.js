@@ -27,7 +27,6 @@ const exportedMethod = {
             ingredients : recipeinfo.ingredients,
             steps : recipeinfo.steps,
             comment : [],
-            src:recipeinfo.src
         };
         const recipeCollection = await recipes();
         const insertInfo = await recipeCollection.insertOne(newRecipe);
