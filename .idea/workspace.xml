@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86506361-84f4-4962-92de-fe2a2cb3e7c0" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/public/js/image-preview.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/task/seed_back_up.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/views/users/register.handlebars" />
-      <change beforePath="$PROJECT_DIR$/data/Recipes.json" afterPath="$PROJECT_DIR$/task/Recipes.json" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/routes/recipes.js" afterPath="$PROJECT_DIR$/routes/recipes.js" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" afterPath="$PROJECT_DIR$/routes/users.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/data/recipes.js" afterPath="$PROJECT_DIR$/data/recipes.js" />
+      <change beforePath="$PROJECT_DIR$/node_modules/bluebird/package.json" afterPath="$PROJECT_DIR$/node_modules/bluebird/package.json" />
+      <change beforePath="$PROJECT_DIR$/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/task/Recipes.json" afterPath="" />
       <change beforePath="$PROJECT_DIR$/task/seed.js" afterPath="$PROJECT_DIR$/task/seed.js" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/main.handlebars" afterPath="$PROJECT_DIR$/views/layouts/main.handlebars" />
-      <change beforePath="$PROJECT_DIR$/views/recipes/new-recipe.handlebars" afterPath="$PROJECT_DIR$/views/recipes/new-recipe.handlebars" />
-      <change beforePath="$PROJECT_DIR$/views/users/login.handlebars" afterPath="$PROJECT_DIR$/views/users/login.handlebars" />
-      <change beforePath="$PROJECT_DIR$/views/users/private.handlebars" afterPath="$PROJECT_DIR$/views/users/private.handlebars" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="seed.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="seed.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/task/seed.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            <state relative-caret-position="260">
+              <caret line="10" column="57" lean-forward="false" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
               <folding>
                 <element signature="e#1914#1986#0" expanded="false" />
               </folding>
@@ -47,7 +40,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="homepage.handlebars" pinned="false" current-in-tab="false">
+      <file leaf-file-name="homepage.handlebars" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/homepage.handlebars">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="260">
@@ -98,7 +91,6 @@
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/final_project/node_modules" />
-    <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="3" />
@@ -322,16 +314,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1525824663210</updated>
-      <workItem from="1525824664790" duration="10351000" />
+      <workItem from="1525824664790" duration="10633000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10351000" />
+    <option name="totallyTimeSpent" value="10633000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="25" width="1676" height="938" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -345,7 +336,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31922612" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1499388" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1499388" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -500,24 +491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task/Recipes.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5850">
-          <caret line="1850" column="0" lean-forward="false" selection-start-line="1850" selection-start-column="0" selection-end-line="1850" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!block;n#Recipe2#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#Recipe3#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#Recipe4#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#Recipe5#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#Recipe6#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#Recipe7#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#Recipe8#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#Recipe9#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#Recipe10#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/recipes/new-recipe.handlebars">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -569,14 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/homepage.handlebars">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="467">
@@ -587,11 +552,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/task/seed.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        <state relative-caret-position="260">
+          <caret line="10" column="57" lean-forward="false" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
           <folding>
             <element signature="e#1914#1986#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task/Recipes.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="1850" column="0" lean-forward="false" selection-start-line="1850" selection-start-column="0" selection-end-line="1850" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/homepage.handlebars">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
