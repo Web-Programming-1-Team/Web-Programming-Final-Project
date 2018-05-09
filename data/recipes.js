@@ -23,6 +23,7 @@ const exportedMethod = {
             category: recipeinfo.category,
             likes : 0,
             posterID : recipeinfo.posterID,
+            picture: recipeinfo.picture,
             ingredients : recipeinfo.ingredients,
             steps : recipeinfo.steps,
             comment : [],
@@ -30,6 +31,14 @@ const exportedMethod = {
         };
         const recipeCollection = await recipes();
         const insertInfo = await recipeCollection.insertOne(newRecipe);
+        if(insertInfo === 0) throw "Can not insert a new recipe!";
+        const inserted_one = await this.getRecipeById(insertInfo.insertedId);
+        return inserted_one;
+    },
+
+    async initRecipe(recipe){
+        const recipeCollection = await recipes();
+        const insertInfo = await recipeCollection.insertOne(recipe);
         if(insertInfo === 0) throw "Can not insert a new recipe!";
         const inserted_one = await this.getRecipeById(insertInfo.insertedId);
         return inserted_one;

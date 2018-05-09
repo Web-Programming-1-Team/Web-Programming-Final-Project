@@ -2,6 +2,9 @@ const dbConnection = require("../config/mongoConnection");
 const data = require("../data/");
 const users = data.users;
 const recipes = data.recipes;
+const bluebird = require("bluebird");
+const fs = bluebird.promisifyAll(require("fs"));
+
 async function main() {
     const db = await dbConnection();
     const exist_users = await db.collection("users");
@@ -10,6 +13,48 @@ async function main() {
         db.dropCollection("users");
     if(exist_recipes)
         db.dropCollection("recipes");
+
+    const recipes_temp = [];
+    const fileContent = await fs.readFileAsync(__dirname + "/Recipes.json", "utf-8");
+    const jsonObj = JSON.parse(fileContent);
+    for (let i = 0; i < jsonObj.length; i++) {
+        let record = jsonObj[i];
+        let _id = record['_id'];
+        let title = record['title'];
+        let category = record['category'];
+        let likes = record['likes'];
+        let posterID = record['posterID'];
+        let picture = record['picture'];
+        let ingredients = record['ingredients'];
+        let steps = record['steps'];
+        let comment = record['comment'];
+
+        const newRecipe = {
+            _id : _id,
+            title : title,
+            category: category,
+            likes : likes,
+            posterID : posterID,
+            picture : picture,
+            ingredients : ingredients,
+            steps : steps,
+            comment : comment
+        };
+        const insert_recipe = await recipes.initRecipe(newRecipe);
+        const single_recipe = {
+            _id : insert_recipe[0]._id,
+            title : insert_recipe[0].title,
+            likes : insert_recipe[0].likes,
+            picture : insert_recipe[0].picture
+        };
+        recipes_temp.push(single_recipe);
+    }
+
+    const top10recipes = {
+        _id : "Top10",
+        recipes: recipes_temp
+    };
+    await recipes.createTop10Recipes(top10recipes);
 
     const newUser = {
         username: "test",
@@ -20,37 +65,10 @@ async function main() {
         },
     };
     await users.createUser(newUser);
-    let recipestmp = [];
-
-        tmptitle = `recipe1`;
-        const newRecipe = {
-            title: tmptitle,
-            category: "chuan",
-            likes: 0,
-            posterID: "admin",
-            ingredients: [],
-            steps: [],
-            comment: [],
-            src: "http://localhost:3000/public/images/vim-cheat-sheet-diagram.png"
-        };
-        const insert_recipe = await recipes.createRecipe(newRecipe);
-        const singlerecipe = {
-            _id : insert_recipe[0]._id,
-            title : insert_recipe[0].title,
-            likes : insert_recipe[0].likes,
-            src:insert_recipe[0].src
-        };
-        recipestmp.push(singlerecipe);
-
-    const top10recipes = {
-        _id : "Top10",
-        recipes: recipestmp
-    };
-    await recipes.createTop10Recipes(top10recipes);
-
 
     await db.serverConfig.close();
     console.log("Seeding done");
 }
+
 
 main();
