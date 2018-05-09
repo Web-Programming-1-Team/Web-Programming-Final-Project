@@ -7,7 +7,6 @@ const ccap = require('ccap');
 //homepage with or without user login
 router.get("/", async (req,res)=>{
     const top10 = await recipes.getRecipeById("Top10");
-    console.log(top10[0].recipes);
     if(req.session.user){
         res.render("homepage", {login : true,
                                  user:req.session.user,

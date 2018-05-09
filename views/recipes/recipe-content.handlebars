@@ -1,5 +1,25 @@
-<p>{{id}}</p>
-<p>{{recipe.id}}</p>
 <p>{{recipe.title}}</p>
 <p>{{recipe.category}}</p>
 <p>{{recipe.likes}}</p>
+<p>{{recipe.posterID}}</p>
+<img src="{{recipe.picture}}">
+<ul>
+    {{#each recipe.ingredients}}
+        <li>
+            <div>
+                <p>{{name}}</p>
+                <p>{{amount}}</p>
+            </div>
+        </li>
+    {{/each}}
+</ul>
+<ul>
+    {{#each recipe.steps}}
+        <li>
+            <p>{{instruction}}</p>
+            {{#each image}}
+                <img src="{{src}}">
+            {{/each}}
+        </li>
+    {{/each}}
+</ul>
