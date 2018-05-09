@@ -50,6 +50,7 @@ router.get("/logout", async(req,res)=>{
 //private page
 router.get("/private/:id", async(req,res)=>{
     const id = req.params.id;
+    const getUser = await users.getUserById(id);
     res.render("users/private",{user : req.session.user, id : id});
 });
 

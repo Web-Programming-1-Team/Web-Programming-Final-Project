@@ -31,7 +31,7 @@ const exportedMethods = {
             admin: userinfo.admin,
             profile : {
                 _id: id,
-                nickname: userinfo.nickname,
+                nickname: userinfo.profile.nickname,
                 favorite:[]
             },
             postlist:[]
