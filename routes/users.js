@@ -81,4 +81,10 @@ router.get('/getCaptcha', (req,res)=>{
     res.end(buffer);
 });
 
+router.post('/search', async(req,res)=>{
+    let keyword= req.body.search;
+    const result = await recipes.getRecipeByKey(keyword);
+    res.render('users/search',{result : result});
+});
+
 module.exports = router;
