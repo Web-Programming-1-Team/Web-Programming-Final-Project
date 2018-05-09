@@ -25,7 +25,8 @@ const exportedMethod = {
             posterID : recipeinfo.posterID,
             ingredients : recipeinfo.ingredients,
             steps : recipeinfo.steps,
-            comment : []
+            comment : [],
+            src:recipeinfo.src
         };
         const recipeCollection = await recipes();
         const insertInfo = await recipeCollection.insertOne(newRecipe);

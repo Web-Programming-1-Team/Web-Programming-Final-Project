@@ -8,6 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
+app.use("/public", express.static(__dirname + "/public"));
 app.set("view engine", "handlebars");
 app.use(session(
     {

@@ -20,26 +20,31 @@ async function main() {
         },
     };
     await users.createUser(newUser);
-    const newRecipe = {
-        title : "recipe1",
-        category: "chuan",
-        likes : 0,
-        posterID : "admin",
-        ingredients : [],
-        steps : [],
-        comment : []
-    };
-    const insert_recipe = await recipes.createRecipe(newRecipe);
-    console.log(insert_recipe);
+    let recipestmp = [];
+
+        tmptitle = `recipe1`;
+        const newRecipe = {
+            title: tmptitle,
+            category: "chuan",
+            likes: 0,
+            posterID: "admin",
+            ingredients: [],
+            steps: [],
+            comment: [],
+            src: "http://localhost:3000/public/images/vim-cheat-sheet-diagram.png"
+        };
+        const insert_recipe = await recipes.createRecipe(newRecipe);
+        const singlerecipe = {
+            _id : insert_recipe[0]._id,
+            title : insert_recipe[0].title,
+            likes : insert_recipe[0].likes,
+            src:insert_recipe[0].src
+        };
+        recipestmp.push(singlerecipe);
+
     const top10recipes = {
         _id : "Top10",
-        recipes: [
-            {
-                _id : insert_recipe[0]._id,
-                title : insert_recipe[0].title,
-                likes : insert_recipe[0].likes
-            }
-            ]
+        recipes: recipestmp
     };
     await recipes.createTop10Recipes(top10recipes);
 
