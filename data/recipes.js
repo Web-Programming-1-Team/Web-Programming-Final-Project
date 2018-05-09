@@ -75,6 +75,12 @@ const exportedMethod = {
         const recipeCollection = await recipes();
         const deleteInfo = await recipeCollection.removeOne({_id : id});
         if(deleteInfo === 0) throw "Can not delete recipe by given id!";
+    },
+
+    async getRecipeByKey(keyword){
+        const recipeCollection = await recipes();
+        const result = await recipeCollection.find({title: {$regex:keyword}}).toArray();
+        return result;
     }
 };
 

@@ -20,7 +20,7 @@ async function main() {
     for (let i = 0; i < jsonObj.length; i++) {
         let record = jsonObj[i];
         let _id = record['_id'];
-        let title = record['title'];
+        let title = record['title'].toLowerCase();
         let category = record['category'];
         let likes = record['likes'];
         let posterID = record['posterID'];
