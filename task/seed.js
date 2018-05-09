@@ -49,7 +49,6 @@ async function main() {
         };
         recipes_temp.push(single_recipe);
     }
-
     const top10recipes = {
         _id : "Top10",
         recipes: recipes_temp

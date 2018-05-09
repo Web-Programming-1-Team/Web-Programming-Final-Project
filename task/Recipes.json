@@ -1,6 +1,6 @@
-{
-  "Recipe1": {
-    "_id": "XXXXXX",
+[
+  {
+    "_id": "4b3115c2-4fe6-4069-9d67-9ca0d44e04d4",
     "title": "Hong Kong style toast",
     "category": "Toast",
     "likes": "1000",
@@ -213,8 +213,8 @@
       }
     ]
   },
-  "Recipe2": {
-    "_id": "XXXXXX",
+  {
+    "_id": "497886eb-2d2e-4b1a-a9c3-819802aa8bd3",
     "title": "Mapo Tofu",
     "category": "Sichuan cuisine",
     "likes": "10000",
@@ -371,8 +371,8 @@
       }
     ]
   },
-  "Recipe3": {
-    "_id": "XXXXXX",
+  {
+    "_id": "48f02a9e-8a6a-45dd-8cc9-8d0bcffa46ad",
     "title": "Braised eggplant with red meat.",
     "category": "Home cooking",
     "likes": "1633",
@@ -533,8 +533,8 @@
       }
     ]
   },
-  "Recipe4": {
-    "_id": "XXXXXX",
+  {
+    "_id": "32c0c2c9-06a5-4fdf-b435-8db1f7f3832b",
     "title": "Roast beef with potatoes",
     "category": "Stew",
     "likes": "153",
@@ -707,8 +707,8 @@
       }
     ]
   },
-  "Recipe5": {
-    "_id": "XXXXXX",
+  {
+    "_id": "c0b7cd9e-ac1f-4cc3-86a9-447ae2e2a078",
     "title": "Chilli fish head",
     "category": "Dishes",
     "likes": "150",
@@ -889,8 +889,8 @@
       }
     ]
   },
-  "Recipe6": {
-    "_id": "XXXXXX",
+  {
+    "_id": "f42b9bd4-1a2d-449e-8ad7-f6fcab284085",
     "title": "Strawberry milk Popsicle.",
     "category": "Ice cream",
     "likes": "730",
@@ -1079,8 +1079,8 @@
       }
     ]
   },
-  "Recipe7": {
-    "_id": "XXXXXX",
+  {
+    "_id": "7807e44b-1ca9-4a1b-aa34-6dbcd9e67645",
     "title": "Summer drinks",
     "category": "Drinks",
     "likes": "420",
@@ -1269,8 +1269,8 @@
       }
     ]
   },
-  "Recipe8": {
-    "_id": "XXXXXX",
+  {
+    "_id": "771f8c0e-d504-45f0-8a49-0f8776b7b329",
     "title": "Ham and cheese egg sandwich.",
     "category": "Breakfast",
     "likes": "320",
@@ -1451,8 +1451,8 @@
       }
     ]
   },
-  "Recipe9": {
-    "_id": "XXXXXX",
+  {
+    "_id": "facb61d5-595d-458f-9bd0-0ebd398d67a3",
     "title": "Muffin",
     "category": "Dessert",
     "likes": "1123",
@@ -1633,8 +1633,8 @@
       }
     ]
   },
-  "Recipe10": {
-    "_id": "XXXXXX",
+  {
+    "_id": "4f812630-7944-4366-b5c7-367016c0dab6",
     "title": "Peanut butter seaweed pasta.",
     "category": "Italian",
     "likes": "255",
@@ -1847,4 +1847,4 @@
       }
     ]
   }
-}
+]
