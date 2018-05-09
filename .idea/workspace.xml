@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="86506361-84f4-4962-92de-fe2a2cb3e7c0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/data/recipes.js" afterPath="$PROJECT_DIR$/data/recipes.js" />
+      <change beforePath="$PROJECT_DIR$/task/seed.js" afterPath="$PROJECT_DIR$/task/seed.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,11 +37,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="homepage.handlebars" pinned="false" current-in-tab="true">
+      <file leaf-file-name="homepage.handlebars" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/homepage.handlebars">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="260">
               <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Recipes.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/task/Recipes.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="1839" column="14" lean-forward="true" selection-start-line="1839" selection-start-column="14" selection-end-line="1839" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -86,6 +98,7 @@
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/final_project/node_modules" />
+    <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="3" />
@@ -309,12 +322,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1525824663210</updated>
-      <workItem from="1525824664790" duration="10813000" />
+      <workItem from="1525824664790" duration="11008000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10813000" />
+    <option name="totallyTimeSpent" value="11008000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="25" width="1676" height="938" extended-state="0" />
@@ -564,18 +577,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/task/Recipes.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="1850" column="0" lean-forward="false" selection-start-line="1850" selection-start-column="0" selection-end-line="1850" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/homepage.handlebars">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="10" column="13" lean-forward="true" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task/Recipes.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="1839" column="14" lean-forward="true" selection-start-line="1839" selection-start-column="14" selection-end-line="1839" selection-end-column="14" />
           <folding />
         </state>
       </provider>
