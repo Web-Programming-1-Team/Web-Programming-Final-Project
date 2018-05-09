@@ -10,11 +10,11 @@ router.get("/", async (req,res)=>{
     if(req.session.user){
         res.render("homepage", {login : true,
                                  user:req.session.user,
-                                 recipe: top10.recipes});
+                                 recipe: top10[0].recipes});
     }
     else{
         res.render("homepage", {login : false,
-                                recipe : top10.recipes});
+                                recipe : top10[0].recipes});
     }
 });
 
@@ -29,9 +29,8 @@ router.post("/login", async (req,res)=>{
         const username = user.username;
         const password = user.password;
         const getUser = await users.getUserByName(username);
-
-        if (username === getUser.username && password === getUser.password) {
-            req.session.user = getUser;
+        if (username === getUser[0].username && password === getUser[0].password) {
+            req.session.user = getUser[0];
             res.redirect("/");
         }
         else {
