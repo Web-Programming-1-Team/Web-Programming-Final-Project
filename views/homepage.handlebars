@@ -1,11 +1,14 @@
-
-    {{#if login }}
-        <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
-        <a href="http://localhost:3000/logout">logout</a>
-    {{else}}
-        <a href="http://localhost:3000/login">login</a>
-    {{/if}}
+{{#if login }}
+    <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
+    <a href="http://localhost:3000/logout">logout</a>
+{{else}}
+    <a href="http://localhost:3000/login">login</a>
+{{/if}}
+<ul>
     {{#each recipe}}
-        <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
-        <img src="{{src}}" width="320" height="240">
+        <li>
+            <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
+            <img src="{{picture}}" width="320" height="240">
+        </li>
     {{/each}}
+</ul>
