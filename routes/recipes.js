@@ -33,6 +33,39 @@ router.post('/upload', upload.single('file'), function (req, res) {
 });
 
 router.post("/uploads",function(req,res){
+    console.log(src_list);
+    console.log(req.body);
+    const name = req.body.name;
+    const amount = req.body.amount;
+    const instruction = req.body.instruction;
+    let ingredients = [];
+    for(let i = 0; i < name.length; i++){
+        const tempobj = {
+            name : name[i],
+            amount : amount[i]
+        };
+        ingredients.push(tempobj);
+    }
+
+    let steps = [];
+    for(let i = 0; i < instruction.length; i++){
+        const tempobj = {
+            instruction : instruction[i],
+            image : src_list[i + 1]
+        };
+        steps.push(tempobj);
+    }
+
+
+    let newrecipe = {};
+    newrecipe.title = req.body.title;
+    newrecipe.category = req.body.category;
+    newrecipe.posterID = req.session.user._id;
+    newrecipe.picture = src_list[0];
+    newrecipe.ingredients = ingredients;
+    newrecipe.steps = steps;
+    console.log(newrecipe);
+
     res.redirect('/');
 });
 

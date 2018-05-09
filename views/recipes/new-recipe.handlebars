@@ -1,6 +1,35 @@
-<form action="/recipes/uploads" method="post" enctype="multipart/form-data" name="img-form">
-    <div id="steps-list">
+<form action="/recipes/uploads" method="post" name="img-form">
+    <div class="upload-box">
+        <div class="picture-content">
+            <label for="title">
+                <input name="title" placeholder="Please enter the title of this recipe" style="width: 300px">
+            </label>
+            <label for="category">
+                <input name="category" placeholder="please enter the category of this recipe" style="width: 200px">
+            </label>
+            <div class="upload-picture">
+                <span class="upload-text">
+                    Click here to upload a cover picture
+                </span>
+                <img class="cover-preview" src="" width="600" height="500">
+            </div>
+        </div>
+        <div class="upload-ingredients">
+            <ul class="ingredient-list">
+                <li>
+                    <label for="name">
+                        <input name="name">
+                    </label>
+                    <label for="amount">
+                        <input name="amount">
+                    </label>
+                </li>
+            </ul>
+        </div>
+        <p id="add-ingredient">Add more ingredients</p>
+        <div class="upload-list">
+        </div>
     </div>
-    <button type="submit">submit</button>
     <p id="add-step">Add new step</p>
+    <button type="submit">submit</button>
 </form>

@@ -1,0 +1,30 @@
+.steps{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: aliceblue;
+    width: 320px;
+    height: 240px;
+}
+.upload-text{
+    display: inline;
+}
+.upload-preview{
+    display: none;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+}
+.cover-preview{
+    display: none;
+    flex-shrink: 0;
+}
+.upload-picture{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #d7d3d9;
+    width: 600px;
+    height: 500px;
+}
