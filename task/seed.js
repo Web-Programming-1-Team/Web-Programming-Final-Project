@@ -2,6 +2,7 @@ const dbConnection = require("../config/mongoConnection");
 const data = require("../data/");
 const users = data.users;
 const recipes = data.recipes;
+const categories = data.categories;
 const bluebird = require("bluebird");
 const fs = bluebird.promisifyAll(require("fs"));
 
@@ -9,10 +10,13 @@ async function main() {
     const db = await dbConnection();
     const exist_users = await db.collection("users");
     const exist_recipes = await db.collection("recipes");
-    if(exist_users)
+    const exist_categories = await db.collection("categories");
+    if (exist_users)
         db.dropCollection("users");
-    if(exist_recipes)
+    if (exist_recipes)
         db.dropCollection("recipes");
+    if (exist_categories)
+        db.dropCollection("categories");
 
     const recipes_temp = [];
     const fileRecipe = await fs.readFileAsync(__dirname + "/Recipes.json", "utf-8");
@@ -67,9 +71,9 @@ async function main() {
     await recipes.createTop10Recipes(top10recipes);
 
     const fileUser = await fs.readFileAsync(__dirname + "/Users.json", "utf-8");
-    const jsonBoj2 =JSON.parse(fileUser);
-    for (let i = 0; i < jsonBoj2.length; i++) {
-        let record = jsonBoj2[i];
+    const jsonObj2 =JSON.parse(fileUser);
+    for (let i = 0; i < jsonObj2.length; i++) {
+        let record = jsonObj2[i];
         let _id = record['_id'];
         let username = record['username'];
         let password = record['password'];
@@ -85,6 +89,21 @@ async function main() {
             postlist : postlist
         };
         await users.initUser(newUser);
+    }
+
+    const fileCategories = await fs.readFileAsync(__dirname + "/Categories.json", "utf-8");
+    const jsonObj3 = JSON.parse(fileCategories);
+    for (let i = 0; i < jsonObj3.length; i++) {
+        let record = jsonObj3[i];
+        let _id = record['_id'];
+        let name = record['name'];
+        let recipes = record['recipes'];
+        const newCategory = {
+            _id : _id,
+            name : name,
+            recipes : recipes
+        }
+        await categories.initCategories(newCategory);
     }
 
     await db.serverConfig.close();

@@ -2,21 +2,35 @@
   {
     "_id" : "5fdffc3b-58e3-4e1c-ae4e-3fcdf057f60d",
     "name" : "Chinese dishes",
-    "recipes" : []
+    "recipes" : [
+      "497886eb-2d2e-4b1a-a9c3-819802aa8bd3",
+      "48f02a9e-8a6a-45dd-8cc9-8d0bcffa46ad",
+      "32c0c2c9-06a5-4fdf-b435-8db1f7f3832b",
+      "c0b7cd9e-ac1f-4cc3-86a9-447ae2e2a078"
+    ]
   },
   {
     "_id" : "0f90c7c4-8949-4a07-8ed4-c93e7d84f9df",
     "name" : "Italian dishes",
-    "recipes" : []
+    "recipes" : [
+      "4f812630-7944-4366-b5c7-367016c0dab6"
+    ]
   },
   {
     "_id" : "88982c0c-fb4c-4ecb-9d0e-5e13e32d90e7",
     "name" : "Desserts",
-    "recipes" : []
+    "recipes" : [
+      "4b3115c2-4fe6-4069-9d67-9ca0d44e04d4",
+      "f42b9bd4-1a2d-449e-8ad7-f6fcab284085",
+      "771f8c0e-d504-45f0-8a49-0f8776b7b329",
+      "facb61d5-595d-458f-9bd0-0ebd398d67a3"
+    ]
   },
   {
     "_id" : "f3190bd2-0acd-4130-8569-9fc4993f8fe5",
     "name" : "Drinks",
-    "recipes" : []
+    "recipes" : [
+      "7807e44b-1ca9-4a1b-aa34-6dbcd9e67645"
+    ]
   }
 ]
