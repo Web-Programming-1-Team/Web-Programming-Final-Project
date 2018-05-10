@@ -1,3 +1,4 @@
+<a href="http://localhost:3000">home</a>
 <p>{{user.id}}</p>
 <p>{{user.username}}</p>
 <p>{{user.password}}</p>
@@ -5,21 +6,25 @@
 
 <a href="http://localhost:3000/recipes/upload">New Recipe</a>
 
-<ul>
-    <p>Your favorite recipes</p>
-    {{#each favorite}}
-        <li>
-            <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
-            <img src="{{picture}}" width="320" height="240">
-        </li>
-    {{/each}}
-</ul>
-<ul>
-    <p>Your post recipes</p>
-    {{#each post}}
-        <li>
-            <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
-            <img src="{{picture}}" width="320" height="240">
-        </li>
-    {{/each}}
-</ul>
+{{#if admin }}
+
+{{else}}
+    <ul>
+        <p>Your favorite recipes</p>
+        {{#each favorite}}
+            <li>
+                <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
+                <img src="{{picture}}" width="320" height="240">
+            </li>
+        {{/each}}
+    </ul>
+    <ul>
+        <p>Your post recipes</p>
+        {{#each post}}
+            <li>
+                <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
+                <img src="{{picture}}" width="320" height="240">
+            </li>
+        {{/each}}
+    </ul>
+{{/if}}
