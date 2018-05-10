@@ -51,7 +51,19 @@ router.get("/logout", async(req,res)=>{
 router.get("/private/:id", async(req,res)=>{
     const id = req.params.id;
     const getUser = await users.getUserById(id);
-    res.render("users/private",{user : req.session.user, id : id});
+    const favorite = getUser[0].profile.favorite;
+    const favorite_recipes = [];
+    for (let i = 0; i < favorite.length; i++) {
+        let getRecipe = await recipes.getRecipeById(favorite[i]);
+        favorite_recipes.push(getRecipe[0]);
+    }
+    const postlist = getUser[0].postlist;
+    const post_recipes = [];
+    for (let i = 0; i < postlist.length; i++) {
+        let getRecipe = await recipes.getRecipeById(postlist[i]);
+        post_recipes.push(getRecipe[0]);
+    }
+    res.render("users/private",{user : req.session.user, id : id, post : post_recipes, favorite : favorite_recipes});
 });
 
 router.get("/register", (req,res)=>{
