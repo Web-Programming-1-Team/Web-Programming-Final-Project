@@ -24,14 +24,15 @@ async function main() {
         let _id = record['_id'];
         let title = record['title'].toLowerCase();
         let category = record['category'];
-        let likes = parseInt(record['likes']);
+        let likes = record['likes'];
+        let likes_temp = parseInt(likes);
         let posterID = record['posterID'];
         let picture = record['picture'];
         let ingredients = record['ingredients'];
         let steps = record['steps'];
         let comment = record['comment'];
-        if(likes < min_like){
-            min_like = likes;
+        if(likes_temp < min_like){
+            min_like = likes_temp;
             min_id = _id;
         }
 

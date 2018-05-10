@@ -115,6 +115,7 @@ router.post("/:id", async(req,res)=>{
         const curRecipe = await recipes.getRecipeById(id);
         curRecipe[0].likes = (parseInt(curRecipe[0].likes) + 1).toString();
         await recipes.updateRecipe(id, curRecipe[0]);
+        await recipes.updateTop10(id);
         const userid = req.session.user._id;
         const curUser = await users.getUserById(userid);
         if_favorite = false;
@@ -133,6 +134,7 @@ router.post("/:id", async(req,res)=>{
         const curRecipe = await recipes.getRecipeById(id);
         curRecipe[0].likes = (parseInt(curRecipe[0].likes) -1).toString();
         await recipes.updateRecipe(id, curRecipe[0]);
+        await recipes.updateTop10(id);
         const userid = req.session.user._id;
         const curUser = await users.getUserById(userid);
         const favorite = [];
