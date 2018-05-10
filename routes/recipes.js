@@ -3,6 +3,7 @@ const router = express.Router();
 const data = require("../data");
 const recipes = data.recipes;
 const users = data.users;
+const categories = data.categoriesData;
 const multer  = require('multer');
 let storage = multer.diskStorage({
     destination: function (req, file, cb){
@@ -57,7 +58,14 @@ router.post("/uploads",async(req,res)=>{
         steps.push(tempobj);
     }
 
+    let category_name = req.body.category;
+    const getCategory = await categories.getCategoryByName(category_name);
+    if(getCategory === undefined){
+        const category = {
+            name : category_name,
+        }
 
+    }
 
 
     let newrecipe = {};
