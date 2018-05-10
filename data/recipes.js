@@ -120,7 +120,6 @@ const exportedMethod = {
                 minimum.likes = min;
                 top10[0].recipes = top10_recipes;
                 top10[0].minimum = minimum;
-                console.log(top10[0]);
                 const updateInfo = await recipeCollection.updateOne({_id: "Top10"}, {$set: top10[0]});
                 if (updateInfo === null) throw "Can not update this recipe!";
             }
