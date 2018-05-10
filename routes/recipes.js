@@ -60,17 +60,17 @@ router.post("/uploads",async(req,res)=>{
 
     let category_name = req.body.category;
     let getCategory = await categories.getCategoryByName(category_name);
-    if(getCategory === undefined){
+    if(getCategory.length === 0){
         const category = {
             name : category_name,
         };
         await categories.createCategory(category);
     }
-
+    getCategory = await categories.getCategoryByName(req.body.category);
 
     let newrecipe = {};
     newrecipe.title = req.body.title;
-    newrecipe.category = req.body.category;
+    newrecipe.category = getCategory[0]._id;
     newrecipe.posterID = req.session.user._id;
     newrecipe.picture = src_list[0];
     newrecipe.ingredients = ingredients;
@@ -80,7 +80,6 @@ router.post("/uploads",async(req,res)=>{
     const getUser = await users.getUserById(posterID);
     getUser[0].postlist.push(create_result[0]._id);
     await users.updateUser(posterID,getUser[0]);
-    getCategory = await categories.getCategoryByName(req.body.category);
     getCategory[0].recipes.push(create_result[0]._id);
     await categories.updateCategory(getCategory[0]._id, getCategory[0]);
     res.render('recipes/recipe-content',{recipe : create_result[0]});
