@@ -102,7 +102,7 @@ async function main() {
             _id : _id,
             name : name,
             recipes : recipes
-        }
+        };
         await categories.initCategories(newCategory);
     }
 
