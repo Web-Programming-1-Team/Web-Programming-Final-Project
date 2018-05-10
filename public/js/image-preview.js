@@ -140,7 +140,6 @@
             error:function(){
             }
         });
-
     });
     $(".comment").on("click",function(){
         let url = window.location.href;

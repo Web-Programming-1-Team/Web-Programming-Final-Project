@@ -9,6 +9,13 @@
 {{else}}
     <a href="http://localhost:3000/recipes/upload">New Recipe</a>
     <ul>
+        {{#each follows}}
+            <li>
+                <a href="http://localhost:3000/public/{{_id}}">{{profile.nickname}}</a>
+            </li>
+        {{/each}}
+    </ul>
+    <ul>
         <p>Your favorite recipes</p>
         {{#each favorite}}
             <li>
