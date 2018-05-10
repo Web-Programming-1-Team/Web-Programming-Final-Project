@@ -45,9 +45,16 @@
     {{/each}}
 </ul>
 
-<form action="/recipes/{{id}}/comment" method="post">
+<!--<form action="/recipes/{{id}}/comment" method="post">-->
+    <!--<label for="comment">-->
+        <!--<input name="comment" placeholder="enter some comments here.">-->
+    <!--</label>-->
+    <!--<button type="submit">comment</button>-->
+<!--</form>-->
+
+<div>
     <label for="comment">
         <input name="comment" placeholder="enter some comments here.">
     </label>
-    <button type="submit">comment</button>
-</form>
+    <button type="button" class="comment">comment</button>
+</div>

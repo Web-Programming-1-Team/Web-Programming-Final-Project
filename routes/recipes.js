@@ -99,23 +99,34 @@ router.get("/:id", async(req,res)=>{
 });
 
 router.post("/:id/comment", async(req,res)=>{
-    const id = req.params.id;
-    const userid = req.session.user._id;
-    const username = req.session.user.username;
-    const nickname = req.session.user.profile.nickname;
-    const comment = req.body.comment;
-    const newcomment = {
-        _id:userid,
-      poster:{
-          _id:userid,
-          nickname:nickname,
-      },
-      content:comment
-    };
-    const curRecipe = await recipes.getRecipeById(id);
-    curRecipe[0].comment.push(newcomment);
-    await recipes.updateRecipe(id,curRecipe[0]);
-    res.redirect(`/recipes/${id}`);
+    let exist = true;
+    if(req.session.users === undefined){
+        exist = false;
+    }
+    if(exist) {
+        const id = req.params.id;
+        const userid = req.session.user._id;
+        const username = req.session.user.username;
+        const nickname = req.session.user.profile.nickname;
+        const comment = req.body.comment;
+        const newcomment = {
+            _id: userid,
+            poster: {
+                _id: userid,
+                nickname: nickname,
+            },
+            content: comment
+        };
+        const curRecipe = await recipes.getRecipeById(id);
+        curRecipe[0].comment.push(newcomment);
+        await recipes.updateRecipe(id, curRecipe[0]);
+        res.redirect(`/recipes/${id}`);
+    }else{
+        res.json({
+            code: 200,
+            exist: exist
+        });
+    }
 });
 
 router.post("/:id", async(req,res)=>{
