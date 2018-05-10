@@ -72,19 +72,23 @@ router.post("/uploads",async(req,res)=>{
 router.get("/:id", async(req,res)=>{
     const id = req.params.id;
     const getRecipe = await recipes.getRecipeById(id);
-    const userid = req.session.user._id;
-    const getUser = await users.getUserById(userid);
-    if_favorite = false;
-    for (let i = 0; i < getUser[0].profile.favorite.length; i++){
-        if (id === getUser[0].profile.favorite[i]) {
-            if_favorite = true;
-            break;
+    const getPoster = await users.getUserById(getRecipe[0].posterID);
+    getRecipe[0].posterName = getPoster[0].profile.nickname;
+    let if_favorite = false;
+    if(req.session.users !== undefined) {
+        const userid = req.session.user._id;
+        const getUser = await users.getUserById(userid);
+        for (let i = 0; i < getUser[0].profile.favorite.length; i++) {
+            if (id === getUser[0].profile.favorite[i]) {
+                if_favorite = true;
+                break;
+            }
         }
     }
     if (if_favorite) {
-        res.render("recipes/recipe-content",{recipe : getRecipe[0], id:id, like : true});
+        res.render("recipes/recipe-content", {recipe: getRecipe[0], id: id, like: true});
     } else {
-        res.render("recipes/recipe-content",{recipe : getRecipe[0], id:id, like : false});
+        res.render("recipes/recipe-content", {recipe: getRecipe[0], id: id, like: false});
     }
 });
 
@@ -109,46 +113,53 @@ router.post("/:id/comment", async(req,res)=>{
 });
 
 router.post("/:id", async(req,res)=>{
-    const status = req.body.status;
-    if (status === 'like') {
-        const id = req.params.id;
-        const curRecipe = await recipes.getRecipeById(id);
-        curRecipe[0].likes = (parseInt(curRecipe[0].likes) + 1).toString();
-        await recipes.updateRecipe(id, curRecipe[0]);
-        await recipes.updateTop10(id);
-        const userid = req.session.user._id;
-        const curUser = await users.getUserById(userid);
-        if_favorite = false;
-        for (let i = 0; i < curUser[0].profile.favorite.length; i++){
-            if (id === curUser[0].profile.favorite[i]) {
-                if_favorite = true;
-                break;
+    let exist = true;
+    if(req.session.user === undefined){
+        exist = false;
+    }
+    if(exist) {
+        const status = req.body.status;
+        if (status === 'like') {
+            const id = req.params.id;
+            const curRecipe = await recipes.getRecipeById(id);
+            curRecipe[0].likes = (parseInt(curRecipe[0].likes) + 1).toString();
+            await recipes.updateRecipe(id, curRecipe[0]);
+            await recipes.updateTop10(id);
+            const userid = req.session.user._id;
+            const curUser = await users.getUserById(userid);
+            if_favorite = false;
+            for (let i = 0; i < curUser[0].profile.favorite.length; i++) {
+                if (id === curUser[0].profile.favorite[i]) {
+                    if_favorite = true;
+                    break;
+                }
             }
-        }
-        if (!if_favorite) {
-            curUser[0].profile.favorite.push(id);
-        }
-        await users.updateUser(userid, curUser[0]);
-    } else if (status === 'unlike') {
-        const id = req.params.id;
-        const curRecipe = await recipes.getRecipeById(id);
-        curRecipe[0].likes = (parseInt(curRecipe[0].likes) -1).toString();
-        await recipes.updateRecipe(id, curRecipe[0]);
-        await recipes.updateTop10(id);
-        const userid = req.session.user._id;
-        const curUser = await users.getUserById(userid);
-        const favorite = [];
-        for (let i = 0; i < curUser[0].profile.favorite.length; i++) {
-            if (curUser[0].profile.favorite[i] !== id) {
-                favorite.push(curUser[0].profile.favorite[i]);
+            if (!if_favorite) {
+                curUser[0].profile.favorite.push(id);
             }
+            await users.updateUser(userid, curUser[0]);
+        } else if (status === 'unlike') {
+            const id = req.params.id;
+            const curRecipe = await recipes.getRecipeById(id);
+            curRecipe[0].likes = (parseInt(curRecipe[0].likes) - 1).toString();
+            await recipes.updateRecipe(id, curRecipe[0]);
+            await recipes.updateTop10(id);
+            const userid = req.session.user._id;
+            const curUser = await users.getUserById(userid);
+            const favorite = [];
+            for (let i = 0; i < curUser[0].profile.favorite.length; i++) {
+                if (curUser[0].profile.favorite[i] !== id) {
+                    favorite.push(curUser[0].profile.favorite[i]);
+                }
+            }
+            curUser[0].profile.favorite = favorite;
+            await users.updateUser(userid, curUser[0]);
+        } else {
         }
-        curUser[0].profile.favorite = favorite;
-        await users.updateUser(userid, curUser[0]);
-    } else {
     }
     res.json({
-        code: 200
+        code:200,
+        exist:exist
     });
 
 });
