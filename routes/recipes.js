@@ -85,10 +85,16 @@ router.get("/:id", async(req,res)=>{
             }
         }
     }
+    let login = false;
+    if(req.session.user){
+        login = true;
+    }else {
+        login = false;
+    }
     if (if_favorite) {
-        res.render("recipes/recipe-content", {recipe: getRecipe[0], id: id, like: true});
+        res.render("recipes/recipe-content", {recipe: getRecipe[0], id: id, login: login, user:req.session.user, like: true});
     } else {
-        res.render("recipes/recipe-content", {recipe: getRecipe[0], id: id, like: false});
+        res.render("recipes/recipe-content", {recipe: getRecipe[0], id: id, login: login, user:req.session.user, like: false});
     }
 });
 

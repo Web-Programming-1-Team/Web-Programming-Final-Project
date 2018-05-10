@@ -1,3 +1,10 @@
+{{#if login }}
+    <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
+    <a href="http://localhost:3000/logout">logout</a>
+{{else}}
+    <a href="http://localhost:3000/login">login</a>
+{{/if}}
+<a href="http://localhost:3000">home</a>
 {{#each result}}
     <div class="single-result">
         <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
