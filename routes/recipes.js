@@ -21,7 +21,7 @@ let src_list = [];
 
 router.get("/upload", async (req,res)=>{
     src_list = [];
-    res.render("recipes/new-recipe");
+    res.render("recipes/new-recipe",{id: req.session.user._id});
 });
 
 
