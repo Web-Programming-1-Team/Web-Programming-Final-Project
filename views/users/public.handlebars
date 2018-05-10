@@ -1,0 +1,12 @@
+<a href="http://localhost:3000">home</a>
+<p>{{user.username}}</p>
+
+<ul>
+    <p>{{user.username}}'s post recipes</p>
+    {{#each post}}
+        <li>
+            <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
+            <img src="{{picture}}" width="320" height="240">
+        </li>
+    {{/each}}
+</ul>
