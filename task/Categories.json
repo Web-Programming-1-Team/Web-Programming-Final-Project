@@ -1,0 +1,18 @@
+[
+  {
+    "_id" : "5fdffc3b-58e3-4e1c-ae4e-3fcdf057f60d",
+    "name" : "Chinese dishes"
+  },
+  {
+    "_id" : "0f90c7c4-8949-4a07-8ed4-c93e7d84f9df",
+    "name" : "Italian dishes"
+  },
+  {
+    "_id" : "88982c0c-fb4c-4ecb-9d0e-5e13e32d90e7",
+    "name" : "Desserts"
+  },
+  {
+    "_id" : "f3190bd2-0acd-4130-8569-9fc4993f8fe5",
+    "name" : "Drinks"
+  }
+]
