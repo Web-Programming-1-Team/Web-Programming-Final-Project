@@ -7,7 +7,8 @@
     "profile" : {
       "_id" : "fee579a2-5eb6-4781-9b64-1a932efdc0cf",
       "nickname" : "admin",
-      "favorite" : []
+      "favorite" : [],
+      "follows" : []
     },
     "postlist" : []
   },
@@ -23,6 +24,9 @@
         "497886eb-2d2e-4b1a-a9c3-819802aa8bd3",
         "7807e44b-1ca9-4a1b-aa34-6dbcd9e67645",
         "771f8c0e-d504-45f0-8a49-0f8776b7b329"
+      ],
+      "follows" : [
+        "c4e350a1-2133-4352-ba5e-d8d54b041a22"
       ]
     },
     "postlist" : [
@@ -43,6 +47,9 @@
         "4b3115c2-4fe6-4069-9d67-9ca0d44e04d4",
         "32c0c2c9-06a5-4fdf-b435-8db1f7f3832b",
         "48f02a9e-8a6a-45dd-8cc9-8d0bcffa46ad"
+      ],
+      "follows" : [
+        "669d6b2f-fa00-43d9-9c2f-b88dd26676d7"
       ]
     },
     "postlist" : [
@@ -63,6 +70,9 @@
         "c0b7cd9e-ac1f-4cc3-86a9-447ae2e2a078",
         "f42b9bd4-1a2d-449e-8ad7-f6fcab284085",
         "32c0c2c9-06a5-4fdf-b435-8db1f7f3832b"
+      ],
+      "follows" : [
+        "c200e84e-03e6-4f6c-94a5-44550ab6df75"
       ]
     },
     "postlist" : [
@@ -82,6 +92,9 @@
         "facb61d5-595d-458f-9bd0-0ebd398d67a3",
         "4f812630-7944-4366-b5c7-367016c0dab6",
         "48f02a9e-8a6a-45dd-8cc9-8d0bcffa46ad"
+      ],
+      "follows" : [
+        "fee579a2-5eb6-4781-9b64-1a932efdc0cf"
       ]
     },
     "postlist" : [
