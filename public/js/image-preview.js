@@ -141,6 +141,34 @@
             }
         });
     });
+
+    $('p.followAction').on('click', function(){
+        const self = this;
+        const liked = $(this).hasClass('follows');
+        const url = window.location.href;
+        $.ajax({
+            url : url,
+            type : 'POST',
+            dataType : 'json',
+            data : {
+                status : liked ? 'unfollows' : 'follows'
+            },
+            success:function(data){
+                if(data.exist === false){
+                    alert("You must register first");
+                }else {
+                    if (liked) {
+                        $(self).addClass('unfollows').removeClass('follows');
+                    } else {
+                        $(self).addClass('follows').removeClass('unfollows');
+                    }
+                }
+            },
+            error:function(){
+            }
+        });
+    });
+
     $(".comment").on("click",function(){
         let url = window.location.href;
         url += '/comment';
