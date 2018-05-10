@@ -115,20 +115,27 @@
         $('.ingredient-list').append(new_ingredient);
     });
 
-    $(".like").click(function () {
+    $('p.likeAction').on('click', function(){
+        const self = this;
+        const liked = $(this).hasClass('like');
         const url = window.location.href;
         $.ajax({
-            url: url,
-            type: 'POST',
-            cache:false,
-            processData: false,
-            contentType: false,
+            url : url,
+            type : 'POST',
+            dataType : 'json',
+            data : {
+                status : liked ? 'unlike' : 'like'
+            },
             success:function(data){
+                if(liked){
+                    $(self).addClass('unlike').removeClass('like');
+                }else{
+                    $(self).addClass('like').removeClass('unlike');
+                }
             },
             error:function(){
             }
         });
-        $(this).toggleClass('cs');
 
     })
 

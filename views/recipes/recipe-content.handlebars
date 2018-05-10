@@ -1,5 +1,9 @@
 <p>{{recipe.title}}</p>
-<p class="like">&#10084;</p>
+{{#if like}}
+    <p class="likeAction like">&#10084;</p>
+{{else}}
+    <p class="likeAction unlike">&#10084;</p>
+{{/if}}
 <p>{{recipe.category}}</p>
 <p>{{recipe.likes}}</p>
 <p>{{recipe.posterID}}</p>
