@@ -3,6 +3,10 @@ const categories = mongoCollections.categories;
 const uuid = require("uuid/v4");
 
 const exportedMethod = {
+    async getAllCategories() {
+        const categoryCollection = await categories();
+        return await categoryCollection.find({}).toArray();
+    },
     async getCategoryById(id){
         if(!id) throw "No category ID provided!";
         const categoryCollection = await categories();

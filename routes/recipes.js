@@ -90,6 +90,10 @@ router.get("/:id", async(req,res)=>{
     const getRecipe = await recipes.getRecipeById(id);
     const getPoster = await users.getUserById(getRecipe[0].posterID);
     getRecipe[0].posterName = getPoster[0].profile.nickname;
+
+    const getCategory = await categories.getCategoryById(getRecipe[0].category);
+    getRecipe[0].category_name = getCategory[0].name;
+
     let if_favorite = false;
     if(req.session.users !== undefined) {
         const userid = req.session.user._id;

@@ -4,6 +4,10 @@
 {{else}}
     <a href="http://localhost:3000/login">login</a>
 {{/if}}
+<br>
+{{#each category}}
+    <a href="http://localhost:3000/categories/{{_id}}">{{name}}</a>
+{{/each}}
 <ul>
     {{#each recipe}}
         <li>

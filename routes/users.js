@@ -3,18 +3,22 @@ const router = express.Router();
 const data = require("../data");
 const users = data.users;
 const recipes = data.recipes;
+const categories = data.categories;
 const ccap = require('ccap');
 //homepage with or without user login
 router.get("/", async (req,res)=>{
     const top10 = await recipes.getRecipeById("Top10");
+    const category = await categories.getAllCategories();
     if(req.session.user){
         res.render("homepage", {login : true,
                                  user:req.session.user,
-                                 recipe: top10[0].recipes});
+                                 recipe: top10[0].recipes,
+                                 category : category});
     }
     else{
         res.render("homepage", {login : false,
-                                recipe : top10[0].recipes});
+                                recipe : top10[0].recipes,
+                                category : category});
     }
 });
 
@@ -98,6 +102,7 @@ router.get('/getCaptcha', (req,res)=>{
 });
 
 router.post('/search', async(req,res)=>{
+
     let keyword= req.body.search;
     const result = await recipes.getRecipeByKey(keyword);
     let login = false;
