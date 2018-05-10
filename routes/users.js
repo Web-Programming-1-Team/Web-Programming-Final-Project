@@ -84,7 +84,13 @@ router.get('/getCaptcha', (req,res)=>{
 router.post('/search', async(req,res)=>{
     let keyword= req.body.search;
     const result = await recipes.getRecipeByKey(keyword);
-    res.render('users/search',{result : result});
+    let login = false;
+    if(req.session.user){
+        login = true;
+    }else {
+        login = false;
+    }
+    res.render('users/search',{result : result, login: login, user:req.session.user});
 });
 
 module.exports = router;
