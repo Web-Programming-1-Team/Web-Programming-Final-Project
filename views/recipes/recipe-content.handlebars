@@ -5,13 +5,16 @@
     <a href="http://localhost:3000/login">login</a>
 {{/if}}
 <a href="http://localhost:3000">home</a>
+<div>
+<a href="http://localhost:3000/categories/{{recipe.category}}">{{recipe.category_name}} >> </a>
 <p>{{recipe.title}}</p>
+</div>
 {{#if like}}
     <p class="likeAction like">&#10084;</p>
 {{else}}
     <p class="likeAction unlike">&#10084;</p>
 {{/if}}
-<p>{{recipe.category}}</p>
+
 <p>{{recipe.likes}}</p>
 <p>{{recipe.posterName}}</p>
 <img src="{{recipe.picture}}" width="500" height="400">

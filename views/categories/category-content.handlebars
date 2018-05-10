@@ -1,6 +1,16 @@
+{{#if login }}
+    <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
+    <a href="http://localhost:3000/logout">logout</a>
+{{else}}
+    <a href="http://localhost:3000/login">login</a>
+{{/if}}
+<a href="http://localhost:3000">home</a>
+
 <p>{{category.name}}</p>
 
 {{#each category.recipe}}
-    <p>{{titile}}</p>
-    <img src="{{picture}}">
+    <div class="category">
+    <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
+    <img src="{{picture}}" width="320" height="240">
+    </div>
 {{/each}}
