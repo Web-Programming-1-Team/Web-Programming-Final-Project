@@ -17,17 +17,23 @@ async function main() {
     const recipes_temp = [];
     const fileRecipe = await fs.readFileAsync(__dirname + "/Recipes.json", "utf-8");
     const jsonObj = JSON.parse(fileRecipe);
+    let min_id;
+    let min_like = 9999;
     for (let i = 0; i < jsonObj.length; i++) {
         let record = jsonObj[i];
         let _id = record['_id'];
         let title = record['title'].toLowerCase();
         let category = record['category'];
-        let likes = record['likes'];
+        let likes = parseInt(record['likes']);
         let posterID = record['posterID'];
         let picture = record['picture'];
         let ingredients = record['ingredients'];
         let steps = record['steps'];
         let comment = record['comment'];
+        if(likes < min_like){
+            min_like = likes;
+            min_id = _id;
+        }
 
         const newRecipe = {
             _id : _id,
@@ -51,7 +57,11 @@ async function main() {
     }
     const top10recipes = {
         _id : "Top10",
-        recipes: recipes_temp
+        recipes: recipes_temp,
+        minimum: {
+            _id : min_id,
+            likes: min_like
+        }
     };
     await recipes.createTop10Recipes(top10recipes);
 

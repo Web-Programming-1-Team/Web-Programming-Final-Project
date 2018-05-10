@@ -81,6 +81,50 @@ const exportedMethod = {
         const recipeCollection = await recipes();
         const result = await recipeCollection.find({title: {$regex:keyword}}).toArray();
         return result;
+    },
+
+    async updateTop10(id){
+        const recipeCollection = await recipes();
+        const curRecipe = await this.getRecipeById(id);
+        const curlikes = parseInt(curRecipe[0].likes);
+        let top10 = await this.getRecipeById("Top10");
+        let minimum = top10[0].minimum;
+        let top10_recipes = top10[0].recipes;
+        let exist = false;
+        for(let i = 0; i < top10_recipes.length;i++){
+            if(top10_recipes[i]._id === id){
+                top10_recipes[i].likes = curlikes;
+                exist = true;
+                top10[0].recipes = top10_recipes;
+                const updateInfo = await recipeCollection.updateOne({_id: "Top10"}, {$set: top10[0]});
+                if (updateInfo === null) throw "Can not update this recipe!";
+            }
+        }
+        if(exist === false) {
+            if (curlikes > minimum.likes) {
+                let min = curlikes;
+                let min_id;
+                for (let i = 0; i < top10_recipes.length; i++) {
+                    if (top10_recipes[i]._id === minimum._id) {
+                        top10_recipes[i]._id = id;
+                        top10_recipes[i].title = curRecipe[0].title;
+                        top10_recipes[i].likes = curlikes;
+                        top10_recipes[i].picture = curRecipe[0].picture;
+                    }
+                    if (min > parseInt(top10_recipes[i].likes)) {
+                        min_id = top10_recipes[i]._id;
+                        min = top10_recipes[i].likes;
+                    }
+                }
+                minimum._id = min_id;
+                minimum.likes = min;
+                top10[0].recipes = top10_recipes;
+                top10[0].minimum = minimum;
+                const updateInfo = await recipeCollection.updateOne({_id: "Top10"}, {$set: top10[0]});
+                if (updateInfo === null) throw "Can not update this recipe!";
+            }
+        }
+
     }
 };
 
