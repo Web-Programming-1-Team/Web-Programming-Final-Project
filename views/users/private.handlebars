@@ -1,14 +1,13 @@
 <a href="http://localhost:3000">home</a>
-<p>{{user.id}}</p>
 <p>{{user.username}}</p>
-<p>{{user.password}}</p>
-<p>{{id}}</p>
-
-<a href="http://localhost:3000/recipes/upload">New Recipe</a>
 
 {{#if admin }}
-
+    {{#each queue}}
+        <a href="http://localhost:3000/queue/{{_id}}">{{recipe.title}}</a>
+        <img src="{{recipe.picture}}" width="320" height="240">
+    {{/each}}
 {{else}}
+    <a href="http://localhost:3000/recipes/upload">New Recipe</a>
     <ul>
         <p>Your favorite recipes</p>
         {{#each favorite}}

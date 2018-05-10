@@ -4,6 +4,7 @@ const data = require("../data");
 const users = data.users;
 const recipes = data.recipes;
 const categories = data.categories;
+const queues = data.queue;
 const ccap = require('ccap');
 //homepage with or without user login
 router.get("/", async (req,res)=>{
@@ -67,10 +68,11 @@ router.get("/private/:id", async(req,res)=>{
         let getRecipe = await recipes.getRecipeById(postlist[i]);
         post_recipes.push(getRecipe[0]);
     }
+    const allQueues = await queues.getAllQueues();
     if (getUser[0].admin) {
-        res.render("users/private",{user : req.session.user, id : id, admin : true});
+        res.render("users/private",{user : req.session.user, admin : true, queue : allQueues});
     } else {
-        res.render("users/private",{user : req.session.user, id : id, admin : false, post : post_recipes, favorite : favorite_recipes});
+        res.render("users/private",{user : req.session.user, admin : false, post : post_recipes, favorite : favorite_recipes});
     }
 });
 
