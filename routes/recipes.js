@@ -4,6 +4,7 @@ const data = require("../data");
 const recipes = data.recipes;
 const users = data.users;
 const categories = data.categories;
+const queue = data.queue;
 const multer  = require('multer');
 let storage = multer.diskStorage({
     destination: function (req, file, cb){
@@ -35,7 +36,6 @@ router.post('/upload', upload.single('file'), function (req, res) {
 });
 
 router.post("/uploads",async(req,res)=>{
-
     const name = req.body.name;
     const amount = req.body.amount;
     const instruction = req.body.instruction;
@@ -57,32 +57,18 @@ router.post("/uploads",async(req,res)=>{
         };
         steps.push(tempobj);
     }
-
-    let category_name = req.body.category;
-    let getCategory = await categories.getCategoryByName(category_name);
-    if(getCategory.length === 0){
-        const category = {
-            name : category_name,
-        };
-        await categories.createCategory(category);
-    }
-    getCategory = await categories.getCategoryByName(req.body.category);
-
     let newrecipe = {};
     newrecipe.title = req.body.title;
-    newrecipe.category = getCategory[0]._id;
+    newrecipe.category = req.body.category;
     newrecipe.posterID = req.session.user._id;
     newrecipe.picture = src_list[0];
     newrecipe.ingredients = ingredients;
     newrecipe.steps = steps;
-    const create_result = await recipes.createRecipe(newrecipe);
-    const posterID = req.session.user._id;
-    const getUser = await users.getUserById(posterID);
-    getUser[0].postlist.push(create_result[0]._id);
-    await users.updateUser(posterID,getUser[0]);
-    getCategory[0].recipes.push(create_result[0]._id);
-    await categories.updateCategory(getCategory[0]._id, getCategory[0]);
-    res.render('recipes/recipe-content',{recipe : create_result[0]});
+    const create_result = await queue.createQueue(newrecipe);
+    res.render("recipes/new-recipe-result",{user: req.session.users});
+});
+
+router.post("/uploads/admin-approve", async(req,res)=>{
 });
 
 router.get("/:id", async(req,res)=>{

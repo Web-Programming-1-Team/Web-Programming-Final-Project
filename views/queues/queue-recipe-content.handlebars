@@ -1,0 +1,31 @@
+<form action="{{id}}/approve" method="post">
+    <button type="submit">Approve</button>
+</form>
+<form action="{{id}}/deny" method="post">
+    <button type="submit">Deny</button>
+</form>
+<p>Recipe title: {{recipe.title}}</p>
+<p>PosterID : {{recipe.posterID}}</p>
+<img src="{{recipe.picture}}" width="500" height="400">
+<ul>
+    <p>Ingredients</p>
+    {{#each recipe.ingredients}}
+        <li>
+            <div>
+                <p>{{name}}</p>
+                <p>{{amount}}</p>
+            </div>
+        </li>
+    {{/each}}
+</ul>
+<ul>
+    <p>Steps</p>
+    {{#each recipe.steps}}
+        <li>
+            <p>{{instruction}}</p>
+            {{#each image}}
+                <img src="{{src}}" width="320" height="240">
+            {{/each}}
+        </li>
+    {{/each}}
+</ul>
