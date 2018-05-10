@@ -181,4 +181,8 @@ router.post("/:id", async(req,res)=>{
 
 });
 
+router.get("/category", async(req, res)=>{
+
+});
+
 module.exports = router;
