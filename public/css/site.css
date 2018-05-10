@@ -28,5 +28,13 @@
     width: 600px;
     height: 500px;
 }
-.like{ font-size:66px;  color:#ccc; cursor:pointer;}
-.cs{color:#f00;}
+.unlike{
+    font-size:66px;
+    color:#ccc;
+    cursor:pointer;
+}
+.like{
+    font-size:66px;
+    cursor:pointer;
+    color:#f00;
+}

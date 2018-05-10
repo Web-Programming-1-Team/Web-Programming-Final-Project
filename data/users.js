@@ -44,7 +44,7 @@ const exportedMethods = {
 
     async initUser(user){
         const newuser = {
-            _id : user.id,
+            _id : user._id,
             username : user.username,
             password : user.password,
             admin : user.admin,
@@ -63,11 +63,8 @@ const exportedMethods = {
         if(user.password){
             updateData.password = user.password;
         }
-        if(user.profile.nickname){
-            updateData.profile.nickname = user.profile.nickname;
-        }
-        if(user.profile.favorite){
-            updateData.profile.favorite = user.profile.favorite;
+        if(user.profile){
+            updateData.profile = user.profile;
         }
         if(user.postlist){
             updateData.postlist = user.postlist;
