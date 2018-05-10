@@ -127,10 +127,14 @@
                 status : liked ? 'unlike' : 'like'
             },
             success:function(data){
-                if(liked){
-                    $(self).addClass('unlike').removeClass('like');
-                }else{
-                    $(self).addClass('like').removeClass('unlike');
+                if(data.exist === false){
+                    alert("You must register first");
+                }else {
+                    if (liked) {
+                        $(self).addClass('unlike').removeClass('like');
+                    } else {
+                        $(self).addClass('like').removeClass('unlike');
+                    }
                 }
             },
             error:function(){
