@@ -71,11 +71,10 @@ router.post("/uploads",async(req,res)=>{
 router.get("/:id", async(req,res)=>{
     const id = req.params.id;
     const getRecipe = await recipes.getRecipeById(id);
-    console.log(getRecipe[0]);
     res.render("recipes/recipe-content",{recipe : getRecipe[0], id:id});
 });
 
-router.post("/:id", async(req,res)=>{
+router.post("/:id/comment", async(req,res)=>{
     const id = req.params.id;
     const userid = req.session.user._id;
     const username = req.session.user.username;
@@ -91,7 +90,6 @@ router.post("/:id", async(req,res)=>{
     };
     const curRecipe = await recipes.getRecipeById(id);
     curRecipe[0].comment.push(newcomment);
-    console.log(curRecipe[0].comment);
     await recipes.updateRecipe(id,curRecipe[0]);
     res.redirect(`/recipes/${id}`);
 });
