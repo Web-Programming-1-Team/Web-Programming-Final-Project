@@ -21,14 +21,14 @@ const exportedMethod = {
         const categoryCollection = await categories();
         const insertInfo = await categoryCollection.insertOne(category);
         if (insertInfo === 0) throw "Can not insert a new category!";
-        const inserted_one = await this.getCategoryByName(insertInfo.insertedId);
+        const inserted_one = await this.getCategoryById(insertInfo.insertedId);
         return inserted_one;
     },
     async updateCategory(id, category){
         const categoryCollection = await categories();
         const updateInfo = await categoryCollection.updateOne({_id : id}, {$set : category});
         if(updateInfo === null) throw "Can not update this recipe!";
-        return await this.getCategoryByName(id);
+        return await this.getCategoryById(id);
     },
     async createCategory(category){
         const newCategory = {
@@ -39,7 +39,7 @@ const exportedMethod = {
         const categoryCollection = await categories();
         const insertInfo = await categoryCollection.insertOne(newCategory);
         if (insertInfo === 0) throw "Can not insert a new category!";
-        const inserted_one = await this.getCategoryByName(insertInfo.insertedId);
+        const inserted_one = await this.getCategoryById(insertInfo.insertedId);
         return inserted_one;
     }
 
