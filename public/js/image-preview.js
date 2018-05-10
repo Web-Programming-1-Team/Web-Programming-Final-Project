@@ -115,4 +115,9 @@
         $('.ingredient-list').append(new_ingredient);
     });
 
+    $(".like").click(function () {
+        // TODO add code here
+        $(this).toggleClass('cs');
+    })
+
 })(jQuery);
