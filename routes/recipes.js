@@ -6,6 +6,7 @@ const users = data.users;
 const categories = data.categories;
 const queue = data.queue;
 const multer  = require('multer');
+const xss = require("xss");
 let storage = multer.diskStorage({
     destination: function (req, file, cb){
         cb(null, './public/images')
@@ -18,6 +19,11 @@ let upload = multer({
     storage: storage
 });
 let src_list = [];
+
+router.use(function(req,res,next){
+    xss(req.body);
+    next();
+});
 
 router.get("/upload", async (req,res)=>{
     src_list = [];
