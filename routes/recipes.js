@@ -34,6 +34,7 @@ router.post('/upload', upload.single('file'), function (req, res) {
 });
 
 router.post("/uploads",async(req,res)=>{
+
     const name = req.body.name;
     const amount = req.body.amount;
     const instruction = req.body.instruction;
@@ -45,7 +46,6 @@ router.post("/uploads",async(req,res)=>{
         };
         ingredients.push(tempobj);
     }
-
     let steps = [];
     for(let i = 0; i < instruction.length; i++){
         const tempobj = {
@@ -58,6 +58,8 @@ router.post("/uploads",async(req,res)=>{
     }
 
 
+
+
     let newrecipe = {};
     newrecipe.title = req.body.title;
     newrecipe.category = req.body.category;
@@ -66,6 +68,10 @@ router.post("/uploads",async(req,res)=>{
     newrecipe.ingredients = ingredients;
     newrecipe.steps = steps;
     const create_result = await recipes.createRecipe(newrecipe);
+    const posterID = req.session.user._id;
+    const getUser = await users.getUserById(posterID);
+    getUser[0].postlist.push(create_result[0]._id);
+    await users.updateUser(posterID,getUser[0]);
     res.render('recipes/recipe-content',{recipe : create_result[0]});
 });
 
