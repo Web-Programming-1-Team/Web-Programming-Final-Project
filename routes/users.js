@@ -91,7 +91,23 @@ router.get("/public/:id", async(req,res)=>{
         let getRecipe = await recipes.getRecipeById(postlist[i]);
         post_recipes.push(getRecipe[0]);
     }
-    res.render("users/public", {user : getUser[0], post : post_recipes});
+    let if_follows = false;
+    if(req.session.user !== undefined) {
+        const userid = req.session.user._id;
+        const getUser = await users.getUserById(userid);
+        for (let i = 0; i < getUser[0].profile.favorite.length; i++) {
+            if (id === getUser[0].profile.follows[i]) {
+                if_follows = true;
+                break;
+            }
+        }
+    }
+    if (if_follows) {
+        res.render("users/public", {user : getUser[0], post : post_recipes, follows: true});
+    } else {
+        res.render("users/public", {user : getUser[0], post : post_recipes, follows: false});
+    }
+
 });
 
 
@@ -133,6 +149,50 @@ router.post('/search', async(req,res)=>{
         login = false;
     }
     res.render('users/search',{result : result, login: login, user:req.session.user});
+});
+
+router.post("/public/:id", async(req,res)=>{
+    let exist = true;
+    if(req.session.user === undefined){
+        exist = false;
+    }
+    if(exist) {
+        const status = req.body.status;
+        if (status === 'follows') {
+            const id = req.params.id;
+            const userid = req.session.user._id;
+            const curUser = await users.getUserById(userid);
+            let if_favorite = false;
+            for (let i = 0; i < curUser[0].profile.follows.length; i++) {
+                if (id === curUser[0].profile.follows[i]) {
+                    if_favorite = true;
+                    break;
+                }
+            }
+            if (!if_favorite) {
+                curUser[0].profile.follows.push(id);
+            }
+            await users.updateUser(userid, curUser[0]);
+        } else if (status === 'unfollows') {
+            const id = req.params.id;
+            const userid = req.session.user._id;
+            const curUser = await users.getUserById(userid);
+            const follows = [];
+            for (let i = 0; i < curUser[0].profile.follows.length; i++) {
+                if (curUser[0].profile.follows[i] !== id) {
+                    follows.push(curUser[0].profile.follows[i]);
+                }
+            }
+            curUser[0].profile.follows = follows;
+            await users.updateUser(userid, curUser[0]);
+        } else {
+        }
+    }
+    res.json({
+        code:200,
+        exist:exist
+    });
+
 });
 
 module.exports = router;
