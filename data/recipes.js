@@ -93,9 +93,11 @@ const exportedMethod = {
         let exist = false;
         for(let i = 0; i < top10_recipes.length;i++){
             if(top10_recipes[i]._id === id){
-                top10_recipes[i].likes = curlikes;
+                top10_recipes[i].likes = curlikes.toString();
+                minimum.likes = curlikes;
                 exist = true;
                 top10[0].recipes = top10_recipes;
+                top10[0].minimum = minimum;
                 const updateInfo = await recipeCollection.updateOne({_id: "Top10"}, {$set: top10[0]});
                 if (updateInfo === null) throw "Can not update this recipe!";
             }
@@ -117,7 +119,7 @@ const exportedMethod = {
                     }
                 }
                 minimum._id = min_id;
-                minimum.likes = min;
+                minimum.likes = min.toString();
                 top10[0].recipes = top10_recipes;
                 top10[0].minimum = minimum;
                 const updateInfo = await recipeCollection.updateOne({_id: "Top10"}, {$set: top10[0]});
