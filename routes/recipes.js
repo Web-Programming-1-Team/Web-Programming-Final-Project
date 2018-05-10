@@ -3,7 +3,7 @@ const router = express.Router();
 const data = require("../data");
 const recipes = data.recipes;
 const users = data.users;
-const categories = data.categoriesData;
+const categories = data.categories;
 const multer  = require('multer');
 let storage = multer.diskStorage({
     destination: function (req, file, cb){
@@ -59,12 +59,12 @@ router.post("/uploads",async(req,res)=>{
     }
 
     let category_name = req.body.category;
-    const getCategory = await categories.getCategoryByName(category_name);
+    let getCategory = await categories.getCategoryByName(category_name);
     if(getCategory === undefined){
         const category = {
             name : category_name,
-        }
-
+        };
+        await categories.createCategory(category);
     }
 
 
@@ -80,6 +80,9 @@ router.post("/uploads",async(req,res)=>{
     const getUser = await users.getUserById(posterID);
     getUser[0].postlist.push(create_result[0]._id);
     await users.updateUser(posterID,getUser[0]);
+    getCategory = await categories.getCategoryByName(req.body.category);
+    getCategory[0].recipes.push(create_result[0]._id);
+    await categories.updateCategory(getCategory[0]._id, getCategory[0]);
     res.render('recipes/recipe-content',{recipe : create_result[0]});
 });
 
