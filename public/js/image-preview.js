@@ -141,6 +141,23 @@
             }
         });
 
-    })
+    });
+    $(".comment").on("click",function(){
+        let url = window.location.href;
+        url += '/comment';
+        $.ajax({
+            url : url,
+            type : 'POST',
+            dataType : 'json',
+            success:function(data){
+                if(data.exist === false){
+                    alert("You must register first");
+                }
+            },
+            error:function(){
+            }
+        });
+    });
+
 
 })(jQuery);
