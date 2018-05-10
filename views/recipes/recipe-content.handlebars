@@ -16,7 +16,7 @@
 {{/if}}
 
 <p>{{recipe.likes}}</p>
-<p>{{recipe.posterName}}</p>
+<a href="http://localhost:3000/public/{{recipe.posterID}}">{{recipe.posterName}}</a>
 <img src="{{recipe.picture}}" width="500" height="400">
 <ul>
     {{#each recipe.ingredients}}

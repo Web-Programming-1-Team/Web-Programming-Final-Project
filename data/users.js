@@ -32,7 +32,8 @@ const exportedMethods = {
             profile : {
                 _id: id,
                 nickname: userinfo.profile.nickname,
-                favorite:[]
+                favorite:[],
+                follows:[]
             },
             postlist:[]
         };

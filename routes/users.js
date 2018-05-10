@@ -76,6 +76,13 @@ router.get("/private/:id", async(req,res)=>{
     }
 });
 
+router.get("/public/:id", async(req,res)=>{
+    const id = req.params.id;
+    const getUser = await users.getUserById(id);
+    res.render("users/public", {user : getUser[0], post : getUser[0].postlist});
+});
+
+
 router.get("/register", (req,res)=>{
     res.render("users/register");
 });
