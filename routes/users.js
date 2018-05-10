@@ -56,6 +56,12 @@ router.get("/logout", async(req,res)=>{
 router.get("/private/:id", async(req,res)=>{
     const id = req.params.id;
     const getUser = await users.getUserById(id);
+    const follows = getUser[0].profile.follows;
+    const follows_cook = [];
+    for (let i = 0; i < follows.length; i++) {
+        let getUser = await users.getUserById(follows[i]);
+        follows_cook.push(getUser[0]);
+    }
     const favorite = getUser[0].profile.favorite;
     const favorite_recipes = [];
     for (let i = 0; i < favorite.length; i++) {
@@ -72,14 +78,20 @@ router.get("/private/:id", async(req,res)=>{
     if (getUser[0].admin) {
         res.render("users/private",{user : req.session.user, admin : true, queue : allQueues});
     } else {
-        res.render("users/private",{user : req.session.user, admin : false, post : post_recipes, favorite : favorite_recipes});
+        res.render("users/private",{user : req.session.user, admin : false, post : post_recipes, favorite : favorite_recipes, follows : follows_cook});
     }
 });
 
 router.get("/public/:id", async(req,res)=>{
     const id = req.params.id;
     const getUser = await users.getUserById(id);
-    res.render("users/public", {user : getUser[0], post : getUser[0].postlist});
+    const postlist = getUser[0].postlist;
+    const post_recipes = [];
+    for (let i = 0; i < postlist.length; i++) {
+        let getRecipe = await recipes.getRecipeById(postlist[i]);
+        post_recipes.push(getRecipe[0]);
+    }
+    res.render("users/public", {user : getUser[0], post : post_recipes});
 });
 
 
