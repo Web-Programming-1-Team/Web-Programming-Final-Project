@@ -116,8 +116,20 @@
     });
 
     $(".like").click(function () {
-        // TODO add code here
+        const url = window.location.href;
+        $.ajax({
+            url: url,
+            type: 'POST',
+            cache:false,
+            processData: false,
+            contentType: false,
+            success:function(data){
+            },
+            error:function(){
+            }
+        });
         $(this).toggleClass('cs');
+
     })
 
 })(jQuery);

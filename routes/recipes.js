@@ -94,4 +94,7 @@ router.post("/:id/comment", async(req,res)=>{
     res.redirect(`/recipes/${id}`);
 });
 
+router.post("/:id", async(req,res)=>{
+});
+
 module.exports = router;
