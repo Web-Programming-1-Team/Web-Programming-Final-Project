@@ -4,5 +4,5 @@ const categoriesData = require("./categories");
 module.exports = {
     recipes : recipesData,
     users : usersData,
-    categoriesData : categoriesData
+    categories : categoriesData
 };
