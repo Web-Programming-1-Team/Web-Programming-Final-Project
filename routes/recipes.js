@@ -20,10 +20,10 @@ let upload = multer({
 });
 let src_list = [];
 
-// router.use(function(req,res,next){
-//     xss(req.body);
-//     next();
-// });
+router.use(function(req,res,next){
+    xss(req.body);
+    next();
+});
 
 router.get("/upload", async (req,res)=>{
     src_list = [];
@@ -33,9 +33,10 @@ router.get("/upload", async (req,res)=>{
 
 router.post('/upload', upload.single('file'), function (req, res) {
     let url = 'http://' + req.headers.host + '/public/images/' + req.file.originalname;
+    console.log(req.file.originalname);
     res.json({
         code : 200,
-        data : url
+        data : xss(url)
     });
     const src = url;
     src_list.push(src);

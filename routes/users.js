@@ -6,6 +6,12 @@ const recipes = data.recipes;
 const categories = data.categories;
 const queues = data.queue;
 const ccap = require('ccap');
+const xss = require('xss');
+
+router.use(function(req,res,next){
+    xss(req.body);
+    next();
+});
 //homepage with or without user login
 router.get("/", async (req,res)=>{
     const top10 = await recipes.getRecipeById("Top10");
