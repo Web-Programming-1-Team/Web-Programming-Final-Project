@@ -193,6 +193,7 @@ button[type=submit] {
 .category-container {
     margin-top: 10px;
     max-width: 100%;
+    margin-left: 23%;
 }
 .category-img-box{
     width:320px;
