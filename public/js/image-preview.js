@@ -177,6 +177,9 @@
             url : url,
             type : 'POST',
             dataType : 'json',
+            data: {
+                comment : $('#comment').val()
+                },
             success:function(data){
                 if(data.exist === false){
                     alert("You must register first");

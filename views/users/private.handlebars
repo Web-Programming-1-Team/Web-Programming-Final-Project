@@ -1,11 +1,30 @@
-<a href="http://localhost:3000">home</a>
-<p>{{user.username}}</p>
+<div class="topbar">
+    <div class="logo-box">
+        <a href="http://localhost:3000/"> <img src="../public/images/logo.png" class="logo"></a>
+    </div>
+    <div class="right-bar">
+        <div class="login-box">
+            <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
+            <a href="http://localhost:3000/logout">logout</a>
+        </div>
+    </div>
+</div>
+
+
+<p class="home-category">{{user.username}}</p>
 
 {{#if admin }}
-    {{#each queue}}
-        <a href="http://localhost:3000/queue/{{_id}}">{{recipe.title}}</a>
-        <img src="{{recipe.picture}}" width="320" height="240">
-    {{/each}}
+    <p class="home-category">Wait for approved</p>
+    <div class="category-container">
+        <ul>
+            {{#each queue}}
+                <li class="category-img-box">
+                    <img src="{{recipe.picture}}" width="320" height="240">
+                    <a href="http://localhost:3000/queue/{{_id}}">{{recipe.title}}</a>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
 {{else}}
     <a href="http://localhost:3000/recipes/upload">New Recipe</a>
     <ul>

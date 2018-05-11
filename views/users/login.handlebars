@@ -1,5 +1,11 @@
-<p>login</p>
-<p>{{error}}</p>
+<div class="topbar">
+    <div class="logo-box">
+        <a href="http://localhost:3000/"> <img src="../public/images/logo.png" class="logo"></a>
+    </div>
+</div>
+
+<p class="home-category">login</p>
+<p class="home-category">{{error}}</p>
 <form action="/login" method="post">
     <label for="username">
         Username:
@@ -10,5 +16,5 @@
         <input name="password" type="password">
     </label>
     <button type="submit">login</button>
-    <a href="http://localhost:3000/register">register</a>
+    <a href="http://localhost:3000/register" class="register">register</a>
 </form>
