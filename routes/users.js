@@ -148,6 +148,8 @@ router.post("/register", async(req,res)=>{
             res.render("users/register", {error: "Wrong verify code!"});
         }
         else {
+            const hash = await bcrypt.hash(user.password, saltRounds);
+            user.password = hash;
             const getUserDatabase = await users.getUserByName(req.body.username);
             if (getUserDatabase.length !== 0) {
                 res.render("users/register", {error: "User already exist!"});
