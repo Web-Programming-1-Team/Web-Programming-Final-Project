@@ -5,7 +5,6 @@ const users = data.users;
 const recipes = data.recipes;
 const categories = data.categories;
 const queues = data.queue;
-const ccap = require('ccap');
 const bcrypt = require("bcrypt");
 const saltRounds = 16;
 const xss = require('xss');
@@ -170,15 +169,15 @@ router.post("/register", async(req,res)=>{
 });
 
 
-router.get('/getCaptcha', (req,res)=>{
-    let captcha = ccap();
-    let ary = captcha.get();
-    let text = ary[0];
-    let buffer = ary[1];
-    req.session.verifycode=text.toLowerCase();
-    res.writeHead(200, { 'Content-Type': 'image/png', 'Content-Length': buffer.length });
-    res.end(buffer);
-});
+// router.get('/getCaptcha', (req,res)=>{
+//     let captcha = ccap();
+//     let ary = captcha.get();
+//     let text = ary[0];
+//     let buffer = ary[1];
+//     req.session.verifycode=text.toLowerCase();
+//     res.writeHead(200, { 'Content-Type': 'image/png', 'Content-Length': buffer.length });
+//     res.end(buffer);
+// });
 
 router.post('/search', async(req,res)=>{
 
