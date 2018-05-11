@@ -42,8 +42,8 @@
         <p>Your favorite recipes</p>
         {{#each favorite}}
         <li class="category-img-box">
-            <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
             <img src="{{picture}}" width="320" height="240">
+            <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
         </li>
         {{/each}}
     </ul>
