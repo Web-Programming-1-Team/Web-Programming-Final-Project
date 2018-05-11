@@ -115,9 +115,9 @@ router.get("/public/:id", async(req,res)=>{
         }
     }
     if (if_follows) {
-        res.render("users/public", {user : getUser[0], post : post_recipes, follows: true});
+        res.render("users/public", {poster : getUser[0], post : post_recipes, follows: true, user: req.session.user});
     } else {
-        res.render("users/public", {user : getUser[0], post : post_recipes, follows: false});
+        res.render("users/public", {poster : getUser[0], post : post_recipes, follows: false, user: req.session.user});
     }
 
 });
