@@ -28,7 +28,7 @@ router.get("/:id", async(req,res)=>{
     category.recipe = recipes_content;
     res.render("categories/category-content",{category : category,
                                               login : login,
-                                              user : req.session.users});
+                                              user : req.session.user});
 });
 
 module.exports = router;

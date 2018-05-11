@@ -4,9 +4,15 @@
             <img src="../public/images/logo.png" class="logo">
         </a>
     </div>
+    <div class="right-bar">
+        <div class="login-box">
+            <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
+            <a href="http://localhost:3000/logout">logout</a>
+        </div>
+    </div>
 </div>
 
-<p class="home-category">Poster : {{user.username}}</p>
+<p class="home-category">Poster : {{poster.username}}</p>
 <div class="right-like">
     {{#if follows}}
     <p class="followAction follows" style="font-size: 30px;">&#10084;</p>
@@ -17,7 +23,7 @@
 
 <div class="private-page-container">
     <ul>
-        <p style="margin-left: 100px;">{{user.username}}'s post recipes</p>
+        <p style="margin-left: 100px;">{{poster.username}}'s post recipes</p>
         {{#each post}}
         <li class="category-img-box">
             <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
