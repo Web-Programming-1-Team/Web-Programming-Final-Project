@@ -1,63 +1,79 @@
-{{#if login }}
+<div class="login-box">
+    {{#if login }}
     <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
     <a href="http://localhost:3000/logout">logout</a>
-{{else}}
+    {{else}}
     <a href="http://localhost:3000/login">login</a>
-{{/if}}
-<a href="http://localhost:3000">home</a>
-<div>
-<a href="http://localhost:3000/categories/{{recipe.category}}">{{recipe.category_name}} >> </a>
-<p>{{recipe.title}}</p>
+    {{/if}}
 </div>
-{{#if like}}
-    <p class="likeAction like">&#10084;</p>
-{{else}}
-    <p class="likeAction unlike">&#10084;</p>
-{{/if}}
+<div class="recipe-topbar">
+    <a href="http://localhost:3000">home</a>
+    <div>
+        <a href="http://localhost:3000/categories/{{recipe.category}}">{{recipe.category_name}} >> </a>
+    </div>
+</div>
+<div class="recipe-page-container">
+    <div class="recipe-title">
+        <p>{{recipe.title}}</p>
+        {{#if like}}
+        <p class="likeAction like">&#10084;</p>
+        {{else}}
+        <p class="likeAction unlike">&#10084;</p>
+        {{/if}}
+    </div>
+    <div class="recipe-info">
+        <div>
+            <img src="{{recipe.picture}}" width="500" height="400">
+        </div>
+        <a href="http://localhost:3000/public/{{recipe.posterID}}">By: {{recipe.posterName}}</a>
+    </div>
 
-<p>{{recipe.likes}}</p>
-<a href="http://localhost:3000/public/{{recipe.posterID}}">{{recipe.posterName}}</a>
-<img src="{{recipe.picture}}" width="500" height="400">
-<ul>
-    {{#each recipe.ingredients}}
-        <li>
-            <div>
-                <p>{{name}}</p>
-                <p>{{amount}}</p>
-            </div>
-        </li>
-    {{/each}}
-</ul>
-<ul>
-    {{#each recipe.steps}}
-        <li>
-            <p>{{instruction}}</p>
-            {{#each image}}
-                <img src="{{src}}" width="320" height="240">
+    <table>
+        <tr>
+            <th>Ingredients</th>
+            <th>Amount</th>
+        </tr>
+        {{#each recipe.ingredients}}
+        <tr>
+            <td>{{name}}</td>
+            <td>{{amount}}</td>
+        </tr>
+        {{/each}}
+
+    </table>
+
+    <div class="recipe-steps">
+        <ol>
+            {{#each recipe.steps}}
+            <li>
+                <p class="text">{{instruction}}</p>
+                {{#each image}}
+                <img src="{{src}}" width="320" height="240"> {{/each}}
+            </li>
             {{/each}}
-        </li>
-    {{/each}}
-</ul>
-<ul>
-    {{#each recipe.comment}}
-        <li>
-            <p>{{poster.nickname}}</p>
-            <br>
-            <p>{{content}}</p>
-        </li>
-    {{/each}}
-</ul>
+        </ol>
+    </div>
 
-<!--<form action="/recipes/{{id}}/comment" method="post">-->
+    <h2 align="center">----------------- Comments -----------------</h2>
+    <ul class="recipe-comment">
+        {{#each recipe.comment}}
+        <li>
+            <p class="name">{{poster.nickname}}:</p>
+            <br>
+            <p class="content">{{content}}</p>
+        </li>
+        {{/each}}
+    </ul>
+
+    <!--<form action="/recipes/{{id}}/comment" method="post">-->
     <!--<label for="comment">-->
-        <!--<input name="comment" placeholder="enter some comments here.">-->
+    <!--<input name="comment" placeholder="enter some comments here.">-->
     <!--</label>-->
     <!--<button type="submit">comment</button>-->
-<!--</form>-->
+    <!--</form>-->
 
-<div>
-    <label for="comment">
-        <input name="comment" placeholder="enter some comments here.">
-    </label>
-    <button type="button" class="comment">comment</button>
+    <div class="new-comment">
+        <textarea name="comment" rows="4" cols="50" placeholder="enter some comments here."></textarea>
+        <button type="botton" class="comment">comment</button>
+    </div>
 </div>

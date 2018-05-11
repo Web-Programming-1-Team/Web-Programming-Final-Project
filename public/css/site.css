@@ -1,4 +1,4 @@
-.steps{
+.steps {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,20 +7,24 @@
     width: 320px;
     height: 240px;
 }
-.upload-text{
+
+.upload-text {
     display: inline;
 }
-.upload-preview{
+
+.upload-preview {
     display: none;
     flex-shrink: 0;
     width: 100%;
     height: 100%;
 }
-.cover-preview{
+
+.cover-preview {
     display: none;
     flex-shrink: 0;
 }
-.upload-picture{
+
+.upload-picture {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,33 +32,39 @@
     width: 600px;
     height: 500px;
 }
-.unlike{
-    font-size:66px;
-    color:#ccc;
-    cursor:pointer;
+
+.unlike {
+    font-size: 66px;
+    color: #ccc;
+    cursor: pointer;
 }
-.like{
-    font-size:66px;
-    cursor:pointer;
-    color:#f00;
+
+.like {
+    font-size: 66px;
+    cursor: pointer;
+    color: #f00;
 }
-.unfollows{
-    font-size:66px;
-    color:#ccc;
-    cursor:pointer;
+
+.unfollows {
+    font-size: 66px;
+    color: #ccc;
+    cursor: pointer;
 }
-.follows{
-    font-size:66px;
-    cursor:pointer;
-    color:#f00;
+
+.follows {
+    font-size: 66px;
+    cursor: pointer;
+    color: #f00;
 }
 
 /*  */
+
 ul {
     list-style-type: none;
 }
 
 /* Home page */
+
 /* Top bar elements */
 
 .topbar {
@@ -63,7 +73,7 @@ ul {
     padding-top: 17px;
     height: 60px;
     border-bottom: 1px solid #f3f3f3;
-    box-shadow: 0 2px 2px -2px rgba(0,0,0,.08);
+    box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .08);
 }
 
 .topbar-container, .page-container {
@@ -74,7 +84,7 @@ ul {
 .logo-box {
     width: 20%;
     position: absolute;
-    top: 0; 
+    top: 0;
     left: 8%;
 }
 
@@ -94,7 +104,7 @@ ul {
     width: 80%;
 }
 
-input[name=search] {
+input[name=search], input[name=comment] {
     width: 50%;
     height: 20%;
     box-sizing: border-box;
@@ -108,44 +118,46 @@ input[name=search] {
 button[type=submit] {
     font-size: 16px;
     color: rgb(255, 255, 255);
-    padding:12px 15px; 
-    background:rgb(233, 148, 21); 
-    border:0 none;
-    cursor:pointer;
+    padding: 12px 15px;
+    background: rgb(233, 148, 21);
+    border: 0 none;
+    cursor: pointer;
     -webkit-border-radius: 5px;
-    border-radius: 5px; 
+    border-radius: 5px;
 }
 
 .login-box a {
     text-decoration: none;
     font-size: 20px;
     float: right;
-    padding:10px 15px;
+    padding: 10px 15px;
     border-radius: 5px;
-    background-color: white; 
+    background-color: white;
     color: rgb(233, 148, 21);
     cursor: pointer;
     margin-right: 10px;
 }
+
 .login-box a:hover {
-    background-color:  rgb(233, 148, 21);
+    background-color: rgb(233, 148, 21);
     color: white;
 }
 
 /* page content  */
+
 .page-container {
     margin-top: 30px;
     max-width: 100%;
 }
-.homepage-img-box { 
+
+.homepage-img-box {
     width: 640px;
     height: 300px;
     float: left;
     margin: 20px;
     width: 320px;
     border: 1px solid #cfcece;
-} 
-
+}
 
 .homepage-img-box a {
     text-align: center;
@@ -153,4 +165,164 @@ button[type=submit] {
     display: block;
     text-decoration: none;
     padding: 15px;
+}
+
+/* recipe content page */
+
+.recipe-topbar a {
+    font-size: 20px;
+    padding: 5px;
+}
+
+.recipe-page-container {
+    margin-top: 30px;
+    width: 800px;
+    margin: auto;
+    position: relative;
+}
+
+.recipe-title p{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.recipe-info {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.recipe-info a {
+    float: left;
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+    padding-left: 50px;
+}
+.recipe-info a:hover {
+    color: rgb(233, 148, 21);
+}
+
+.recipe-info {
+    /* float: left; */
+    margin-top: 0px;
+    font-size: 20px;
+    display: inline;
+}
+
+.recipe-info img {
+    float: left;
+}
+
+.recipe-title .likeAction {
+    float: right;
+    width: 100px;
+
+}
+
+.likeAction {
+    position: relative;
+    margin-right: 100px;
+    float: right;
+    width: 50%;
+}
+
+table {
+    width: 100%;
+    margin: 10px 20px;
+    line-height: 20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-color: grey;
+    font-size: 18px;
+}
+
+td {
+    padding-left: 20px;
+    vertical-align: inherit;
+    border-bottom: 1px solid #cccccc;
+}
+
+tr {
+    width: 60%;
+    width: 80%;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.recipe-steps li {
+    display: block;
+    list-style: none;
+    margin-bottom: 32px;
+    position: relative;
+    counter-increment: li;
+}
+.recipe-steps .text::before{
+    content: counter(li) ". ";
+    color: rgb(233, 148, 21);
+    font-size: 30px;
+    font-style: italic;
+}
+
+ol {
+    /* display: block;
+    list-style-type: decimal;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px; */
+    counter-reset: li;
+    padding-left: 32px;
+}
+
+.recipe-steps .text {
+    width: 290px;
+    margin: 0 60px 0 15px;
+    float: left;
+    font-size: 18px;
+    word-wrap: break-word;
+}
+.recipe-steps .img {
+    float: right;
+}
+
+/* comment */
+.recipe-comment li {
+    border-bottom: 1px solid black;
+}
+
+.recipe-comment .name {
+    font-size: 24px;
+    color: rgb(233, 148, 21);
+    height: 10px;
+}
+
+.new-comment {
+    height: 100px;
+    float: right;
+}
+
+.new-comment button {
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    padding: 12px 30px;
+    margin: 15px;
+    background: rgb(233, 148, 21);
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    display: inline;
+    float: right;
+}
+
+input[name=comment] {
+    width: 300px;
+    height: 30px;
+    display: inline;
+}
+
+textarea {
+    font-size: 16px;
 }
