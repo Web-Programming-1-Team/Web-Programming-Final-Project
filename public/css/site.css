@@ -347,6 +347,7 @@ textarea {
 p.home-category {
     margin-left: 30px;
     font-size: 28px; 
+    margin-right: 100px;
 }
 
 a.add-new-recipe {
@@ -433,4 +434,14 @@ footer {
     position: fixed;
     bottom:0;
     right: 0;
+}
+
+/* public page */
+p.followAction {
+    font-size: 10px;
+}
+
+.right-like {
+    margin-left: 100px;
+    width: 20%;
 }
