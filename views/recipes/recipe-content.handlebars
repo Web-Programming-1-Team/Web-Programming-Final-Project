@@ -1,10 +1,19 @@
-{{#if login }}
-    <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
-    <a href="http://localhost:3000/logout">logout</a>
-{{else}}
-    <a href="http://localhost:3000/login">login</a>
-{{/if}}
-<a href="http://localhost:3000">home</a>
+<div class="topbar">
+    <div class="logo-box">
+        <a href="http://localhost:3000/"> <img src="../public/images/logo.png" class="logo"></a>
+    </div>
+    <div class="right-bar">
+        <div class="login-box">
+            {{#if login }}
+                <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
+                <a href="http://localhost:3000/logout">logout</a>
+            {{else}}
+                <a href="http://localhost:3000/login">login</a>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
 <div>
 <a href="http://localhost:3000/categories/{{recipe.category}}">{{recipe.category_name}} >> </a>
 <p>{{recipe.title}}</p>

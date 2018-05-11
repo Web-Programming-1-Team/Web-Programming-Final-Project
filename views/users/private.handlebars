@@ -1,4 +1,16 @@
-<a href="http://localhost:3000">home</a>
+<div class="topbar">
+    <div class="logo-box">
+        <a href="http://localhost:3000/"> <img src="../public/images/logo.png" class="logo"></a>
+    </div>
+    <div class="right-bar">
+        <div class="login-box">
+            <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
+            <a href="http://localhost:3000/logout">logout</a>
+        </div>
+    </div>
+</div>
+
+
 <p>{{user.username}}</p>
 
 {{#if admin }}

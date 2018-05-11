@@ -1,6 +1,6 @@
 <div class="topbar">
     <div class="logo-box">
-        <img src="../public/images/logo.png" class="logo">
+        <a href="http://localhost:3000/"> <img src="../public/images/logo.png" class="logo"></a>
     </div>
     <div class="right-bar">
         <div class="search-box">
@@ -13,27 +13,28 @@
         </div>
         <div class="login-box">
             {{#if login }}
-            <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
-            <a href="http://localhost:3000/logout">logout</a>
+                <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
+                <a href="http://localhost:3000/logout">logout</a>
             {{else}}
-            <a href="http://localhost:3000/login">login</a>
+                <a href="http://localhost:3000/login">login</a>
             {{/if}}
         </div>
     </div>
 </div>
+<p class="home-category">Categories >> </p>
+<div class="home-category-box">
 
-{{#each category}}
-    <a href="http://localhost:3000/categories/{{_id}}">{{name}}</a>
-{{/each}}
-
+    {{#each category}}
+        <a href="http://localhost:3000/categories/{{_id}}" class="home-category">{{name}}</a>
+    {{/each}}
+</div>
 <div class="page-container">
-
     <ul>
         {{#each recipe}}
-        <li class="homepage-img-box">
-            <img src="{{picture}}" width="320" height="240">
-            <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
-        </li>
+            <li class="homepage-img-box">
+                <img src="{{picture}}" width="320" height="240">
+                <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
+            </li>
         {{/each}}
     </ul>
 </div>
