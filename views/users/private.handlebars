@@ -30,7 +30,7 @@
 {{else}}
 <div class="private-menu-bar">
     <a class="add-new-recipe" href="http://localhost:3000/recipes/upload">Add a New Recipe</a>
-    <ul> Followed by: {{#each follows}}
+    <ul> Follows cook: {{#each follows}}
         <li>
             <a href="http://localhost:3000/public/{{_id}}">{{profile.nickname}}</a>
         </li>
