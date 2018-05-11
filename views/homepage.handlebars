@@ -1,25 +1,23 @@
-{{#if login }}
-    <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
-    <a href="http://localhost:3000/logout">logout</a>
-{{else}}
-    <a href="http://localhost:3000/login">login</a>
-{{/if}}
-<br>
-{{#each category}}
-    <a href="http://localhost:3000/categories/{{_id}}">{{name}}</a>
-{{/each}}
-<ul>
-    {{#each recipe}}
-        <li>
-            <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
-            <img src="{{picture}}" width="320" height="240">
-        </li>
-    {{/each}}
-</ul>
-
-<form action="/search" method="post">
-    <label for="search">
-        <input name="search" placeholder="enter keyword">
-    </label>
-    <button type="submit">search</button>
-</form>
+<div class="topbar">
+    <div class="logo-box">
+        <img src="../public/images/logo.png" class="logo">
+    </div>
+    <div class="right-bar">
+        <div class="search-box">
+            <form action="/search" method="post">
+                <label for="search">
+                    <input name="search" placeholder="enter keyword">
+                </label>
+                <button type="submit">search</button>
+            </form>
+        </div>
+        <div class="login-box">
+            {{#if login }}
+            <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
+            <a href="http://localhost:3000/logout">logout</a>
+            {{else}}
+            <a href="http://localhost:3000/login">login</a>
+            {{/if}}
+        </div>
+    </div>
+</div>
