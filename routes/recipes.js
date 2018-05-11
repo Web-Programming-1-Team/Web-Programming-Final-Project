@@ -33,7 +33,6 @@ router.get("/upload", async (req,res)=>{
 
 router.post('/upload', upload.single('file'), function (req, res) {
     let url = 'http://' + req.headers.host + '/public/images/' + req.file.originalname;
-    // let url = "<script>alert(“hacked”);</script>";
     res.json({
         code : 200,
         data : url

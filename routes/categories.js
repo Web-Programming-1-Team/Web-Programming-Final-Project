@@ -8,7 +8,7 @@ const categories = data.categories;
 
 router.get("/:id", async(req,res)=>{
     let login = false;
-    if(req.session.users !== undefined){
+    if(req.session.user !== undefined){
         login = true;
     }
     const getCategory = await categories.getCategoryById(req.params.id);

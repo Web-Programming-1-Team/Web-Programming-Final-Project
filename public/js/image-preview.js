@@ -76,10 +76,10 @@
         let input = document.createElement('input');
         input.setAttribute('type', 'file');
         let ele = this;
-        // $('#inputBox').append(input);
         $(input).on('change', function(){
             let formData = new FormData();
             formData.append('file', input.files[0]);
+
             $.ajax({
                 url: '/recipes/upload',
                 type: 'POST',
@@ -92,6 +92,7 @@
                         $(ele).find('img').attr('src', data.data);
                         $(ele).find('img').css('display', 'block');
                         $(ele).find('span').remove();
+
                     }else{
                     }
                 },
