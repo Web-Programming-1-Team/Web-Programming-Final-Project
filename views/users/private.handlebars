@@ -1,6 +1,8 @@
 <div class="topbar">
     <div class="logo-box">
-        <a href="http://localhost:3000/"> <img src="../public/images/logo.png" class="logo"></a>
+        <a href="http://localhost:3000/">
+            <img src="../public/images/logo.png" class="logo">
+        </a>
     </div>
     <div class="right-bar">
         <div class="login-box">
@@ -14,42 +16,45 @@
 <p class="home-category">{{user.username}}</p>
 
 {{#if admin }}
-    <p class="home-category">Wait for approved</p>
-    <div class="category-container">
-        <ul>
-            {{#each queue}}
-                <li class="category-img-box">
-                    <img src="{{recipe.picture}}" width="320" height="240">
-                    <a href="http://localhost:3000/queue/{{_id}}">{{recipe.title}}</a>
-                </li>
-            {{/each}}
-        </ul>
-    </div>
-{{else}}
-    <a href="http://localhost:3000/recipes/upload">New Recipe</a>
+<p class="home-category">Wait for approved</p>
+<div class="category-container">
     <ul>
-        {{#each follows}}
-            <li>
-                <a href="http://localhost:3000/public/{{_id}}">{{profile.nickname}}</a>
-            </li>
+        {{#each queue}}
+        <li class="category-img-box">
+            <img src="{{recipe.picture}}" width="320" height="240">
+            <a href="http://localhost:3000/queue/{{_id}}">{{recipe.title}}</a>
+        </li>
         {{/each}}
     </ul>
+</div>
+{{else}}
+<div class="private-menu-bar">
+    <a class="add-new-recipe" href="http://localhost:3000/recipes/upload">Add a New Recipe</a>
+    <ul> Followed by: {{#each follows}}
+        <li>
+            <a href="http://localhost:3000/public/{{_id}}">{{profile.nickname}}</a>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+<div class="private-page-container">
     <ul>
         <p>Your favorite recipes</p>
         {{#each favorite}}
-            <li>
-                <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
-                <img src="{{picture}}" width="320" height="240">
-            </li>
+        <li class="category-img-box">
+            <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
+            <img src="{{picture}}" width="320" height="240">
+        </li>
         {{/each}}
     </ul>
     <ul>
         <p>Your post recipes</p>
         {{#each post}}
-            <li>
-                <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
-                <img src="{{picture}}" width="320" height="240">
-            </li>
+        <li class="category-img-box">
+            <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
+            <img src="{{picture}}" width="320" height="240">
+        </li>
         {{/each}}
     </ul>
+</div>
 {{/if}}

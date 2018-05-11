@@ -79,7 +79,7 @@ ul {
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .08);
 }
 
-.topbar-container, .page-container {
+.topbar-container, .page-container, .private-page-container {
     width: 1000px;
     margin: auto;
 }
@@ -145,7 +145,7 @@ button[type=submit] {
 
 .login-box a {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 24px;
     float: right;
     padding: 10px 15px;
     border-radius: 5px;
@@ -342,9 +342,58 @@ input[name=comment] {
 textarea {
     font-size: 16px;
 }
-=======
-    color: black;
+
+/* private page */
+p.home-category {
+    margin-left: 30px;
+    font-size: 28px; 
 }
+
+a.add-new-recipe {
+    font-size: 24px;
+}
+
+.private-menu-bar {
+    margin-top: 30px;
+    margin-left: 100px;
+}
+.private-menu-bar ul {
+    font-size: 22px;
+}
+.private-menu-bar li{
+    display: inline;
+    font-size: 20px;
+}
+.private-menu-bar a {
+    text-decoration: none;
+}
+
+.private-menu-bar .add-new-recipe {
+    font-size: 24px;
+    text-decoration: none;
+}
+.private-page-container {
+    margin-top: 30px;
+    width: 800px;
+    margin: auto;
+    position: relative;
+}
+
+.private-page-container p {
+    font-size: 24px;
+    color:  rgb(233, 148, 21);
+}
+
+.private-page-container p:hover {
+    color:  rgb(233, 148, 21);
+}
+
+.private-page-container li {
+    margin-left: 10%;
+}
+
+
+/* category */
 
 .home-category-box {
     width: 100%;
