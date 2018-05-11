@@ -6,12 +6,15 @@ const recipes = data.recipes;
 const categories = data.categories;
 const queues = data.queue;
 const ccap = require('ccap');
+const bcrypt = require("bcrypt");
+const saltRounds = 16;
 const xss = require('xss');
 
 router.use(function(req,res,next){
     xss(req.body);
     next();
 });
+
 //homepage with or without user login
 router.get("/", async (req,res)=>{
     const top10 = await recipes.getRecipeById("Top10");
@@ -38,15 +41,18 @@ router.post("/login", async (req,res)=>{
     try {
         const user = req.body;
         const username = user.username;
-        const password = user.password;
+        const plainTextPassword = user.password;
         const getUser = await users.getUserByName(username);
-        if (username === getUser[0].username && password === getUser[0].password) {
-            req.session.user = getUser[0];
-            res.redirect("/");
-        }
-        else {
-            res.render("users/login", {error: "wrong password!"});
-        }
+        await bcrypt.compare(plainTextPassword, getUser[0].password, function (err, result) {
+            if(result) {
+                // Passwords match
+                req.session.user = getUser[0];
+                res.redirect("/");
+            } else {
+                // Passwords don't match
+                res.render("users/login", {error: "wrong password!"});
+            }
+        });
     }catch(e){
         res.render("users/login", {error: "wrong username!"})
     }
@@ -97,7 +103,23 @@ router.get("/public/:id", async(req,res)=>{
         let getRecipe = await recipes.getRecipeById(postlist[i]);
         post_recipes.push(getRecipe[0]);
     }
-    res.render("users/public", {user : getUser[0], post : post_recipes});
+    let if_follows = false;
+    if(req.session.user !== undefined) {
+        const userid = req.session.user._id;
+        const getUser = await users.getUserById(userid);
+        for (let i = 0; i < getUser[0].profile.favorite.length; i++) {
+            if (id === getUser[0].profile.follows[i]) {
+                if_follows = true;
+                break;
+            }
+        }
+    }
+    if (if_follows) {
+        res.render("users/public", {user : getUser[0], post : post_recipes, follows: true});
+    } else {
+        res.render("users/public", {user : getUser[0], post : post_recipes, follows: false});
+    }
+
 });
 
 
@@ -132,6 +154,8 @@ router.post("/register", async(req,res)=>{
             res.render("users/register", {error: "Wrong verify code!"});
         }
         else {
+            const hash = await bcrypt.hash(user.password, saltRounds);
+            user.password = hash;
             const getUserDatabase = await users.getUserByName(req.body.username);
             if (getUserDatabase.length !== 0) {
                 res.render("users/register", {error: "User already exist!"});
@@ -167,6 +191,50 @@ router.post('/search', async(req,res)=>{
         login = false;
     }
     res.render('users/search',{result : result, login: login, user:req.session.user});
+});
+
+router.post("/public/:id", async(req,res)=>{
+    let exist = true;
+    if(req.session.user === undefined){
+        exist = false;
+    }
+    if(exist) {
+        const status = req.body.status;
+        if (status === 'follows') {
+            const id = req.params.id;
+            const userid = req.session.user._id;
+            const curUser = await users.getUserById(userid);
+            let if_favorite = false;
+            for (let i = 0; i < curUser[0].profile.follows.length; i++) {
+                if (id === curUser[0].profile.follows[i]) {
+                    if_favorite = true;
+                    break;
+                }
+            }
+            if (!if_favorite) {
+                curUser[0].profile.follows.push(id);
+            }
+            await users.updateUser(userid, curUser[0]);
+        } else if (status === 'unfollows') {
+            const id = req.params.id;
+            const userid = req.session.user._id;
+            const curUser = await users.getUserById(userid);
+            const follows = [];
+            for (let i = 0; i < curUser[0].profile.follows.length; i++) {
+                if (curUser[0].profile.follows[i] !== id) {
+                    follows.push(curUser[0].profile.follows[i]);
+                }
+            }
+            curUser[0].profile.follows = follows;
+            await users.updateUser(userid, curUser[0]);
+        } else {
+        }
+    }
+    res.json({
+        code:200,
+        exist:exist
+    });
+
 });
 
 module.exports = router;

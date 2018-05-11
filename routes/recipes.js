@@ -72,7 +72,7 @@ router.post("/uploads",async(req,res)=>{
     newrecipe.ingredients = ingredients;
     newrecipe.steps = steps;
     const create_result = await queue.createQueue(newrecipe);
-    res.render("recipes/new-recipe-result",{user: req.session.users});
+    res.render("recipes/new-recipe-result",{user: req.session.user});
 });
 
 router.post("/uploads/admin-approve", async(req,res)=>{
@@ -88,7 +88,7 @@ router.get("/:id", async(req,res)=>{
     getRecipe[0].category_name = getCategory[0].name;
 
     let if_favorite = false;
-    if(req.session.users !== undefined) {
+    if(req.session.user !== undefined) {
         const userid = req.session.user._id;
         const getUser = await users.getUserById(userid);
         for (let i = 0; i < getUser[0].profile.favorite.length; i++) {
@@ -113,7 +113,7 @@ router.get("/:id", async(req,res)=>{
 
 router.post("/:id/comment", async(req,res)=>{
     let exist = true;
-    if(req.session.users === undefined){
+    if(req.session.user === undefined){
         exist = false;
     }
     if(exist) {
@@ -157,7 +157,7 @@ router.post("/:id", async(req,res)=>{
             await recipes.updateTop10(id);
             const userid = req.session.user._id;
             const curUser = await users.getUserById(userid);
-            if_favorite = false;
+            let if_favorite = false;
             for (let i = 0; i < curUser[0].profile.favorite.length; i++) {
                 if (id === curUser[0].profile.favorite[i]) {
                     if_favorite = true;

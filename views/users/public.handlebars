@@ -1,6 +1,10 @@
 <a href="http://localhost:3000">home</a>
 <p>{{user.username}}</p>
-
+{{#if follows}}
+    <p class="followAction follows">&#10084;</p>
+{{else}}
+    <p class="followAction unfollows">&#10084;</p>
+{{/if}}
 <ul>
     <p>{{user.username}}'s post recipes</p>
     {{#each post}}

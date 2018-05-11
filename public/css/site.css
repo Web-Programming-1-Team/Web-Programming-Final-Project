@@ -38,3 +38,13 @@
     cursor:pointer;
     color:#f00;
 }
+.unfollows{
+    font-size:66px;
+    color:#ccc;
+    cursor:pointer;
+}
+.follows{
+    font-size:66px;
+    cursor:pointer;
+    color:#f00;
+}
