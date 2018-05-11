@@ -1,22 +1,28 @@
 <div class="topbar">
     <div class="logo-box">
-        <a href="http://localhost:3000/"> <img src="../public/images/logo.png" class="logo"></a>
+        <a href="http://localhost:3000/">
+            <img src="../public/images/logo.png" class="logo">
+        </a>
     </div>
 </div>
+
 <p class="home-category">Poster : {{user.username}}</p>
-{{#if follows}}
-    <p class="followAction follows" style="font-size: 50px;">&#10084;</p>
-{{else}}
-    <p class="followAction unfollows" style="font-size: 50px;">&#10084;</p>
-{{/if}}
+<div class="right-like">
+    {{#if follows}}
+    <p class="followAction follows" style="font-size: 30px;">&#10084;</p>
+    {{else}}
+    <p class="followAction unfollows" style="font-size: 30px;">&#10084;</p>
+    {{/if}}
+</div>
+
 <div class="private-page-container">
-<ul>
-    <p style="margin-left: 100px;">{{user.username}}'s post recipes</p>
-    {{#each post}}
+    <ul>
+        <p style="margin-left: 100px;">{{user.username}}'s post recipes</p>
+        {{#each post}}
         <li class="category-img-box">
             <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
             <img src="{{picture}}" width="320" height="240">
         </li>
-    {{/each}}
-</ul>
+        {{/each}}
+    </ul>
 </div>
