@@ -2,7 +2,7 @@
   {
     "_id" : "fee579a2-5eb6-4781-9b64-1a932efdc0cf",
     "username" : "admin",
-    "password" : "admin",
+    "password" : "$2b$16$ypBsSsRIkYjMJYfRf/91pOuiYT5SommKfNZrcTjpSaQ0b0A4KsDdS",
     "admin" : true,
     "profile" : {
       "_id" : "fee579a2-5eb6-4781-9b64-1a932efdc0cf",
@@ -15,7 +15,7 @@
   {
     "_id" : "ed3223e8-0d68-482b-a0e1-1d1239bb3575",
     "username" : "Xinzhe Weng",
-    "password" : "test1",
+    "password" : "$2b$16$Ui3hYAmkLcn8dL2bFCSeh.63gSw6pztP9s6havlrem3fzIxUYk5Wq",
     "admin" : false,
     "profile" : {
       "_id" : "ed3223e8-0d68-482b-a0e1-1d1239bb3575",
@@ -38,7 +38,7 @@
   {
     "_id" : "c4e350a1-2133-4352-ba5e-d8d54b041a22",
     "username" : "Ke Ye",
-    "password" : "test2",
+    "password" : "$2b$16$TvFOjZ28L219BVcFC/sGRuSNA37Uu/E3HfCRqHuvhKl6.cG86q1Ry",
     "admin" : false,
     "profile" : {
       "_id" : "c4e350a1-2133-4352-ba5e-d8d54b041a22",
@@ -61,7 +61,7 @@
   {
     "_id" : "669d6b2f-fa00-43d9-9c2f-b88dd26676d7",
     "username" : "Chaobo Wu",
-    "password" : "test3",
+    "password" : "$2b$16$nXZvcP/STaKLoyl3AYgmSe3wakZhtU2Nb6DcIHu9TSjp/EOMgHCc.",
     "admin" : false,
     "profile" : {
       "_id" : "669d6b2f-fa00-43d9-9c2f-b88dd26676d7",
@@ -83,7 +83,7 @@
   {
     "_id" : "c200e84e-03e6-4f6c-94a5-44550ab6df75",
     "username" : "Jiayue Wu",
-    "password" : "test3",
+    "password" : "$2b$16$SY/nvJvIngWEZW7QHWtfuuxzjYrGfuCstgLwssUXExB16XQT5.V.W",
     "admin" : false,
     "profile" : {
       "_id" : "c200e84e-03e6-4f6c-94a5-44550ab6df75",
