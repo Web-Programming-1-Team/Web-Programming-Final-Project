@@ -14,9 +14,14 @@
     </div>
 </div>
 
-{{#each result}}
-    <div class="single-result">
-        <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
-        <img src="{{picture}}" width="320" height="240">
-    </div>
-{{/each}}
+<p class="home-category">Result >> </p>
+<div class="category-container">
+    <ul>
+        {{#each result}}
+            <li class="category-img-box">
+                <img src="{{picture}}" width="320" height="240">
+                <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
+            </li>
+        {{/each}}
+    </ul>
+</div>
