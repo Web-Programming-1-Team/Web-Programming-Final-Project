@@ -8,6 +8,12 @@ const queues = data.queue;
 const ccap = require('ccap');
 const bcrypt = require("bcrypt");
 const saltRounds = 16;
+const xss = require('xss');
+
+router.use(function(req,res,next){
+    xss(req.body);
+    next();
+});
 
 //homepage with or without user login
 router.get("/", async (req,res)=>{
