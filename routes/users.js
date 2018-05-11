@@ -116,15 +116,43 @@ router.get("/register", (req,res)=>{
 });
 
 router.post("/register", async(req,res)=>{
+    let error = {};
+    let error_flag = false;
     const user = req.body;
-    user.admin = false;
-    const text = user.verify;
-    while(text !== req.session.verifycode){
-        res.redirect("/register");
+    if(!req.body.username){
+        error.usernameerror = "username can't be empty!";
+        error_flag = true;
     }
-    const getUser = await users.createUser(user);
-    req.session.user = getUser[0];
-    res.redirect("/");
+    if(!req.body.password){
+        error.passworderror = "password can't be empty!";
+        error_flag = true;
+    }
+    if(!req.body.nickname){
+        error.nicknameerror = "nickname can't be empty!";
+        error_flag = true;
+    }
+    user.admin = false;
+
+    if(error_flag){
+        res.render("users/register", {error_list: error});
+    }
+    else {
+        const text = user.verify.toLowerCase();
+        if (text !== req.session.verifycode) {
+            res.render("users/register", {error: "Wrong verify code!"});
+        }
+        else {
+            const getUserDatabase = await users.getUserByName(req.body.username);
+            if (getUserDatabase.length !== 0) {
+                res.render("users/register", {error: "User already exist!"});
+            }
+            else {
+                const getUser = await users.createUser(user);
+                req.session.user = getUser[0];
+                res.redirect("/");
+            }
+        }
+    }
 });
 
 
