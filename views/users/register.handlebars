@@ -4,27 +4,33 @@
     </div>
 </div>
 
-<p>register</p>
-<p>{{error}}</p>
-<p>{{error_list.usernameerror}}</p>
-<p>{{error_list.passworderror}}</p>
-<p>{{error_list.nicknameerror}}</p>
+<p class="home-category">register</p>
+<p class="home-category">{{error}}</p>
+<p class="home-category">{{error_list.usernameerror}}</p>
+<p class="home-category">{{error_list.passworderror}}</p>
+<p class="home-category">{{error_list.nicknameerror}}</p>
 <form action="/register" method="post">
-    <label for="username">
+    <label for="username" style="margin-left: 1px;">
         Username:
         <input name="username">
     </label>
-    <label for="password">
+    <br>
+    <label for="password" style="margin-left: 4px">
         Password:
         <input name="password" type="password">
     </label>
+    <br>
     <label for="nickname">
         Nickname:
         <input name="nickname">
     </label>
+    <br>
     <label for="verify">
+        Verify Code:
         <input name="verify">
     </label>
-    <img src="/getCaptcha">
+
+    <img src="/getCaptcha" width="200" height="50">
+    <br>
     <button type="submit">register</button>
 </form>
