@@ -21,3 +21,17 @@
         </div>
     </div>
 </div>
+
+
+
+<div class="page-container">
+
+    <ul>
+        {{#each recipe}}
+        <li class="homepage-img-box">
+            <img src="{{picture}}" width="320" height="240">
+            <a href="http://localhost:3000/recipes/{{_id}}">{{title}}</a>
+        </li>
+        {{/each}}
+    </ul>
+</div>
