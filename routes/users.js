@@ -6,6 +6,9 @@ const recipes = data.recipes;
 const categories = data.categories;
 const queues = data.queue;
 const ccap = require('ccap');
+const bcrypt = require("bcrypt");
+const saltRounds = 16;
+
 //homepage with or without user login
 router.get("/", async (req,res)=>{
     const top10 = await recipes.getRecipeById("Top10");
@@ -32,15 +35,18 @@ router.post("/login", async (req,res)=>{
     try {
         const user = req.body;
         const username = user.username;
-        const password = user.password;
+        const plainTextPassword = user.password;
         const getUser = await users.getUserByName(username);
-        if (username === getUser[0].username && password === getUser[0].password) {
-            req.session.user = getUser[0];
-            res.redirect("/");
-        }
-        else {
-            res.render("users/login", {error: "wrong password!"});
-        }
+        await bcrypt.compare(plainTextPassword, getUser[0].password, function (err, result) {
+            if(result) {
+                // Passwords match
+                req.session.user = getUser[0];
+                res.redirect("/");
+            } else {
+                // Passwords don't match
+                res.render("users/login", {error: "wrong password!"});
+            }
+        });
     }catch(e){
         res.render("users/login", {error: "wrong username!"})
     }
