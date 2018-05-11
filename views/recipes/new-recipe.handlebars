@@ -3,12 +3,18 @@
 <form action="/recipes/uploads" method="post" name="img-form">
     <div class="upload-box">
         <div class="picture-content">
-            <label for="title">
-                <input name="title" placeholder="Please enter the title of this recipe" style="width: 300px">
-            </label>
-            <label for="category">
-                <input name="category" placeholder="please enter the category of this recipe" style="width: 200px">
-            </label>
+            <div class="recipe-title">
+                Title of Recipe
+                <label for="title">
+                    <input name="title" placeholder="Please enter the title of this recipe" style="width: 300px">
+                </label>
+            </div>
+            <div class="recipe-topbar">
+                Category of Recipe
+                <label for="category">
+                    <input name="category" placeholder="please enter the category of this recipe" style="width: 200px">
+                </label>
+            </div>
             <div class="upload-picture">
                 <span class="upload-text">
                     Click here to upload a cover picture
@@ -16,18 +22,24 @@
                 <img class="cover-preview" src="" width="600" height="500">
             </div>
         </div>
-        <div class="upload-ingredients">
-            <ul class="ingredient-list">
-                <li>
+        <table class="ingredient-list">
+            <tr>
+                <th>Ingredients</th>
+                <th>Amount</th>
+            </tr>
+            <tr>
+                <td>
                     <label for="name">
                         <input name="name">
                     </label>
+                </td>
+                <td>
                     <label for="amount">
                         <input name="amount">
                     </label>
-                </li>
-            </ul>
-        </div>
+                </td>
+            </tr>
+        </table>
         <p id="add-ingredient">Add more ingredients</p>
         <div class="upload-list">
         </div>

@@ -44,6 +44,9 @@
     cursor: pointer;
     color: #f00;
 }
+.ingredient-list{
+    width: 400px;
+}
 
 .unfollows {
     font-size: 66px;

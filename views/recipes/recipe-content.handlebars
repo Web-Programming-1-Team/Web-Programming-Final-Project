@@ -1,14 +1,19 @@
-
-<div class="login-box">
-    {{#if login }}
-    <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
-    <a href="http://localhost:3000/logout">logout</a>
-    {{else}}
-    <a href="http://localhost:3000/login">login</a>
-    {{/if}}
+<div class="topbar">
+    <div class="logo-box">
+        <a href="http://localhost:3000/"> <img src="../public/images/logo.png" class="logo"></a>
+    </div>
+    <div class="right-bar">
+        <div class="login-box">
+            {{#if login }}
+                <a href="http://localhost:3000/private/{{user._id}}">{{user.username}}</a>
+                <a href="http://localhost:3000/logout">logout</a>
+            {{else}}
+                <a href="http://localhost:3000/login">login</a>
+            {{/if}}
+        </div>
+    </div>
 </div>
 <div class="recipe-topbar">
-    <a href="http://localhost:3000">home</a>
     <div>
         <a href="http://localhost:3000/categories/{{recipe.category}}">{{recipe.category_name}} >> </a>
     </div>
@@ -74,6 +79,6 @@
     <!--</form>-->
 
     <div class="new-comment">
-        <textarea name="comment" rows="4" cols="50" placeholder="enter some comments here."></textarea>
+        <textarea id="comment" name="comment" rows="4" cols="50" placeholder="enter some comments here."></textarea>
         <button type="botton" class="comment">comment</button>
     </div>

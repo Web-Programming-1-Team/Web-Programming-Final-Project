@@ -16,28 +16,40 @@
 <form action="{{id}}/deny" method="post">
     <button type="submit">Deny</button>
 </form>
-<p>Recipe title: {{recipe.title}}</p>
-<p>PosterID : {{recipe.posterID}}</p>
-<img src="{{recipe.picture}}" width="500" height="400">
-<ul>
-    <p>Ingredients</p>
-    {{#each recipe.ingredients}}
-        <li>
-            <div>
-                <p>{{name}}</p>
-                <p>{{amount}}</p>
-            </div>
-        </li>
-    {{/each}}
-</ul>
-<ul>
-    <p>Steps</p>
-    {{#each recipe.steps}}
-        <li>
-            <p>{{instruction}}</p>
-            {{#each image}}
-                <img src="{{src}}" width="320" height="240">
+
+<div class="recipe-page-container">
+    <div class="recipe-title">
+        <p class="home-category">{{recipe.title}}</p>
+    </div>
+    <div class="recipe-info">
+        <div>
+            <img src="{{recipe.picture}}" width="500" height="400">
+        </div>
+        <a href="http://localhost:3000/public/{{recipe.posterID}}">By: {{recipe.posterName}}</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Ingredients</th>
+            <th>Amount</th>
+        </tr>
+        {{#each recipe.ingredients}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{amount}}</td>
+            </tr>
+        {{/each}}
+
+    </table>
+
+    <div class="recipe-steps">
+        <ol>
+            {{#each recipe.steps}}
+                <li>
+                    <p class="text">{{instruction}}</p>
+                    {{#each image}}
+                        <img src="{{src}}" width="320" height="240"> {{/each}}
+                </li>
             {{/each}}
-        </li>
-    {{/each}}
-</ul>
+        </ol>
+    </div>
