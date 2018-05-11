@@ -9,6 +9,8 @@ const queue = data.queue;
 router.get("/:id", async(req,res)=>{
     const id = req.params.id;
     const getQueue = await queue.getQueueById(id);
+    const getUser = await users.getUserById(getQueue[0].recipe.posterID);
+    getQueue[0].recipe.posterName = getUser[0].profile.nickname;
     res.render("queues/queue-recipe-content",{recipe : getQueue[0].recipe, id:id});
 });
 
@@ -35,17 +37,14 @@ router.post("/:id/approve", async(req,res)=>{
     getCategory[0].recipes.push(create_result[0]._id);
     await categories.updateCategory(getCategory[0]._id, getCategory[0]);
     await queue.deleteQueue(getQueue[0]._id);
-    const allQueues = await queue.getAllQueues();
 
-    res.render("users/private",{user : req.session.user, admin : true, queue : allQueues});
+    res.redirect(`/private/${req.session.user._id}`);
 });
 
 router.post("/:id/deny", async(req,res)=>{
     await queue.deleteQueue(req.params.id);
-    const allQueues = await queue.getAllQueues();
-    res.render("users/private",{user : req.session.user, admin : true, queue : allQueues});
+    res.redirect(`/private/${req.session.user._id}`);
 });
-
 
 
 

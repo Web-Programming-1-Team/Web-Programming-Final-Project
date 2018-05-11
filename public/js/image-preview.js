@@ -23,11 +23,11 @@
         });
     });
 
-
+    let index = 1;
     $("#add-step").on('click',function(){
         const new_step = '<div class="upload-content">\n' +
-            '                <label for="instruction">\n' +
-            '                    <input name="instruction" placeholder="step instruction">\n' +
+            '                <label for="instruction">Step'+index+'<br>\n' +
+            '                    <input name="instruction" placeholder="step instruction" style="width: 320px;">\n' +
             '                </label>\n' +
             '                <div class="steps">\n' +
             '                    <span class="upload-text">\n' +
@@ -36,6 +36,7 @@
             '                    <img class="upload-preview" src="" width="320" height="240">\n' +
             '                </div>\n' +
             '            </div>';
+        index++;
         let step_list = $(".upload-list");
         step_list.append(new_step);
         let input = document.createElement('input');
@@ -67,7 +68,6 @@
             });
             input.click();
             input.empty();
-            // $('#inputBox').empty();
         });
 
     });
@@ -105,14 +105,18 @@
     });
 
     $("#add-ingredient").on('click',function(){
-        const new_ingredient = '<li>\n' +
+        const new_ingredient = '            <tr>\n' +
+            '                <td>\n' +
             '                    <label for="name">\n' +
             '                        <input name="name">\n' +
             '                    </label>\n' +
+            '                </td>\n' +
+            '                <td>\n' +
             '                    <label for="amount">\n' +
             '                        <input name="amount">\n' +
             '                    </label>\n' +
-            '                </li>';
+            '                </td>\n' +
+            '            </tr>';
         $('.ingredient-list').append(new_ingredient);
     });
 
